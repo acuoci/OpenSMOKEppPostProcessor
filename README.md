@@ -1,4 +1,4 @@
-OpenSMOKEppPostProcessor_v01
-============================
+OpenSMOKEppPostProcessor
+========================
 
 Graphical Post Processor for OpenSMOKE++ solvers (based on Qt 5.3)
