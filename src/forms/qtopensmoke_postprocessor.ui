@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>QtOpenSMOKE_PostProcessor_Class</class>
+ <widget class="QMainWindow" name="QtOpenSMOKE_PostProcessor_Class">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>280</width>
+    <height>302</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>QtOpenSMOKE_PostProcessor</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <widget class="QPushButton" name="pushButton_ROPA">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>160</y>
+      <width>211</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="toolTip">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The rate of production analysis can be performed only if:&lt;/p&gt;&lt;p&gt;1. The Output.xml file contains the mass fractions profiles of all the species in the kinetic mechanism&lt;/p&gt;&lt;p&gt;2. The kinetic mechanism has been imported through the Select Mechanism... button&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+    <property name="text">
+     <string>2. Rate of Production Analysis</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_Mechanism">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>80</x>
+      <y>60</y>
+      <width>131</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="toolTip">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The user has to specify the folder containing the kinetics.xml file in which the kinetic mechanism was written after the pre-processing&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+    <property name="text">
+     <string>Select Mechanism ...</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_Profiles">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>120</y>
+      <width>211</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="toolTip">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In order to plot the profiles of the species and the additional variables only the Output.xml file is required (i.e. the User does not have to import also the kinetic.xml file). However, without importing the kinetic.xml file, the possibility to plot the selectivity profiles is not enabled.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+    <property name="text">
+     <string>1. Profiles</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_Results">
+    <property name="geometry">
+     <rect>
+      <x>80</x>
+      <y>20</y>
+      <width>131</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="toolTip">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The user has to specify the folder containing the Output.xml file in which the simulation results are reported&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+    <property name="text">
+     <string>Select Results ...</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_Sensitivity">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>200</y>
+      <width>211</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="toolTip">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The sensitivity analysis can be performed only if:&lt;/p&gt;&lt;p&gt;1. The simulation was performed by exporting the sensitivity coefficients (i.e. the Sensitivities.xml file must be available in the same folder containing the Output.xml file)&lt;/p&gt;&lt;p&gt;2. the kinetic mechanism has been imported through the Select Mechanism... button&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+    <property name="text">
+     <string>3. Sensitivity Analysis</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QToolBar" name="mainToolBar">
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>280</width>
+     <height>26</height>
+    </rect>
+   </property>
+  </widget>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections/>
+ <slots>
+  <slot>ClickSelectMechanismPushButton()</slot>
+ </slots>
+</ui>
