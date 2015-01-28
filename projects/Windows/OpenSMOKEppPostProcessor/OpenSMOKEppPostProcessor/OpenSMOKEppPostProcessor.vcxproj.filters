@@ -24,43 +24,31 @@
       <SourceControlFiles>False</SourceControlFiles>
     </Filter>
     <Filter Include="Generated Files\Debug">
-      <UniqueIdentifier>{2a81449c-d13b-44e7-8faf-fbf8ff31c3cf}</UniqueIdentifier>
+      <UniqueIdentifier>{cf620bb7-697d-464f-9146-f409e0f1985a}</UniqueIdentifier>
       <Extensions>cpp;moc</Extensions>
       <SourceControlFiles>False</SourceControlFiles>
     </Filter>
     <Filter Include="Generated Files\Release">
-      <UniqueIdentifier>{708be7eb-342e-495b-848f-fca231c705c8}</UniqueIdentifier>
+      <UniqueIdentifier>{9c38b901-d046-4704-9633-aa6bd11cb856}</UniqueIdentifier>
       <Extensions>cpp;moc</Extensions>
       <SourceControlFiles>False</SourceControlFiles>
     </Filter>
-    <Filter Include="Source Files\QCustomPlot">
-      <UniqueIdentifier>{75d4d731-01da-42ed-9d3d-291beca2c956}</UniqueIdentifier>
+    <Filter Include="Header Files\qcustomplot">
+      <UniqueIdentifier>{095f8023-d471-488e-93c3-e261c3a7a357}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\QCustomPlot">
-      <UniqueIdentifier>{8398a627-b671-4947-b610-e06ff6ee3bd4}</UniqueIdentifier>
+    <Filter Include="Source Files\qcustomplot">
+      <UniqueIdentifier>{261bf6c4-6660-47f1-a683-1cb175c60986}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GeneratedFiles\qrc_opensmokepppostprocessor.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\CollectionOfClasses.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\qtopensmoke_postprocessor.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_qtopensmoke_postprocessor.cpp">
       <Filter>Generated Files\Debug</Filter>
     </ClCompile>
     <ClCompile Include="GeneratedFiles\Release\moc_qtopensmoke_postprocessor.cpp">
       <Filter>Generated Files\Release</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\widget_horizontal_bars.cpp">
-      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_widget_horizontal_bars.cpp">
       <Filter>Generated Files\Debug</Filter>
@@ -80,17 +68,11 @@
     <ClCompile Include="GeneratedFiles\Release\moc_window_ropa.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\window_sensitivities.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_window_sensitivities.cpp">
       <Filter>Generated Files\Debug</Filter>
     </ClCompile>
     <ClCompile Include="GeneratedFiles\Release\moc_window_sensitivities.cpp">
       <Filter>Generated Files\Release</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\window_zoom_2dplot.cpp">
-      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_window_zoom_2dplot.cpp">
       <Filter>Generated Files\Debug</Filter>
@@ -98,14 +80,32 @@
     <ClCompile Include="GeneratedFiles\Release\moc_window_zoom_2dplot.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\xyplot.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_xyplot.cpp">
       <Filter>Generated Files\Debug</Filter>
     </ClCompile>
     <ClCompile Include="GeneratedFiles\Release\moc_xyplot.cpp">
       <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\CollectionOfClasses.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\qtopensmoke_postprocessor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\widget_horizontal_bars.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\window_sensitivities.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\window_zoom_2dplot.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\xyplot.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_qcustomplot.cpp">
       <Filter>Generated Files\Debug</Filter>
@@ -113,33 +113,33 @@
     <ClCompile Include="GeneratedFiles\Release\moc_qcustomplot.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\QCustomPlot\qcustomplot-1.2\qcustomplot.cpp">
-      <Filter>Source Files\QCustomPlot</Filter>
+    <ClCompile Include="..\..\..\..\src\QCustomPlot\qcustomplot-1.3\qcustomplot.cpp">
+      <Filter>Source Files\qcustomplot</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="opensmokepppostprocessor.qrc">
       <Filter>Resource Files</Filter>
     </CustomBuild>
-    <CustomBuild Include="..\..\..\..\src\qtopensmoke_postprocessor.h">
-      <Filter>Header Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="..\..\..\..\src\widget_horizontal_bars.h">
-      <Filter>Header Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="..\..\..\..\src\window_ropa.h">
-      <Filter>Header Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="..\..\..\..\src\window_sensitivities.h">
+    <CustomBuild Include="..\..\..\..\src\xyplot.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
     <CustomBuild Include="..\..\..\..\src\window_zoom_2dplot.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
-    <CustomBuild Include="..\..\..\..\src\xyplot.h">
+    <CustomBuild Include="..\..\..\..\src\window_sensitivities.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\..\src\window_ropa.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
     <CustomBuild Include="..\..\..\..\src\window_profiles.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\..\src\widget_horizontal_bars.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\..\src\qtopensmoke_postprocessor.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
     <CustomBuild Include="..\..\..\..\src\forms\qtopensmoke_postprocessor.ui">
@@ -163,33 +163,33 @@
     <CustomBuild Include="..\..\..\..\src\forms\window_zoom_2dplot.ui">
       <Filter>Form Files</Filter>
     </CustomBuild>
-    <CustomBuild Include="..\..\..\..\src\QCustomPlot\qcustomplot-1.2\qcustomplot.h">
-      <Filter>Header Files\QCustomPlot</Filter>
+    <CustomBuild Include="..\..\..\..\src\QCustomPlot\qcustomplot-1.3\qcustomplot.h">
+      <Filter>Header Files\qcustomplot</Filter>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\..\src\Profiles_Database.hpp">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\Sensitivities_Database.hpp">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\Utilities.hpp">
-      <Filter>Source Files</Filter>
+    <ClInclude Include="..\..\..\..\src\window_ropa.hpp">
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\window_profiles.hpp">
-      <Filter>Source Files</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\src\window_ropa.hpp">
-      <Filter>Source Files</Filter>
+    <ClInclude Include="..\..\..\..\src\Utilities.hpp">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\src\Profiles_Database.h">
+    <ClInclude Include="..\..\..\..\src\Utilities.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\Sensitivities_Database.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\src\Utilities.h">
+    <ClInclude Include="..\..\..\..\src\Profiles_Database.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\Profiles_Database.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\Sensitivities_Database.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_qtopensmoke_postprocessor.h">
@@ -213,5 +213,8 @@
     <ClInclude Include="GeneratedFiles\ui_window_zoom_2dplot.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="OpenSMOKEppPostProcessor.rc" />
   </ItemGroup>
 </Project>
