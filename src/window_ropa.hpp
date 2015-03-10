@@ -645,47 +645,54 @@ void Window_ROPA::AnalyzeCharacteristicTimes()
 			tau[i+1] = 1./std::max(1e-12, fabs(jacobi.singularValues().real()[i]));
 	}
 
-	QVector<double> bins(16);
+	
+	Eigen::VectorXi bins(16);
+	bins.setConstant(0);
+
 	for(unsigned int i=1;i<=dR_over_dc.Rows();i++)
 	{
-		if (tau[i] >=5e2)			bins[15]++;
-		else if (tau[i] >=5e1)		bins[14]++;
-		else if (tau[i] >=5e0)		bins[13]++;
-		else if (tau[i] >=5e-1)		bins[12]++;
-		else if (tau[i] >=5e-2)		bins[11]++;
-		else if (tau[i] >=5e-3)		bins[10]++;
-		else if (tau[i] >=5e-4)		bins[9]++;
-		else if (tau[i] >=5e-5)		bins[8]++;
-		else if (tau[i] >=5e-6)		bins[7]++;
-		else if (tau[i] >=5e-7)		bins[6]++;
-		else if (tau[i] >=5e-8)		bins[5]++;
-		else if (tau[i] >=5e-9)		bins[4]++;
-		else if (tau[i] >=5e-10)	bins[3]++;
-		else if (tau[i] >=5e-11)	bins[2]++;
-		else if (tau[i] >=5e-12)	bins[1]++;
-		else 						bins[0]++;
+		if (tau[i] >=5e2)			bins(15)++;
+		else if (tau[i] >=5e1)		bins(14)++;
+		else if (tau[i] >= 5e0)		bins(13)++;
+		else if (tau[i] >= 5e-1)		bins(12)++;
+		else if (tau[i] >= 5e-2)		bins(11)++;
+		else if (tau[i] >= 5e-3)		bins(10)++;
+		else if (tau[i] >= 5e-4)		bins(9)++;
+		else if (tau[i] >= 5e-5)		bins(8)++;
+		else if (tau[i] >= 5e-6)		bins(7)++;
+		else if (tau[i] >= 5e-7)		bins(6)++;
+		else if (tau[i] >= 5e-8)		bins(5)++;
+		else if (tau[i] >= 5e-9)		bins(4)++;
+		else if (tau[i] >= 5e-10)	bins(3)++;
+		else if (tau[i] >= 5e-11)	bins(2)++;
+		else if (tau[i] >= 5e-12)	bins(1)++;
+		else 						bins(0)++;
 	}
-	double sum = 0;
+
+	int sum = 0;
 	for(unsigned int i=0;i<16;i++)
-		sum += bins[i];
+		sum += bins(i);
+
+	QVector<double> bin(16);
 	for(unsigned int i=0;i<16;i++)
-		bins[i]/=(sum/100.);
+		bin[i]= double(bins(i))/double(sum)*100.;
 
 	QCustomPlot* customPlot = new QCustomPlot();
 	QCPBars *myBars = new QCPBars(customPlot->xAxis, customPlot->yAxis);
 	customPlot->addPlottable(myBars);
-		
 	myBars->setName("Characteristic chemical times");
 	QVector<double> keyData;
 	keyData << -12 <<-11 << -10 << -9 << -8 << -7 << -6 << -5 << -4 << -3 << -2 << -1 << 0 << 1 << 2 << 3;	
-	myBars->setData(keyData, bins);
+	myBars->setData(keyData, bin);
 	customPlot->rescaleAxes();
-	
+
 	customPlot->xAxis->setRangeLower(-12.);
 	customPlot->xAxis->setRangeUpper(4.);
 	customPlot->xAxis->setTickStep(2.);
 	customPlot->yAxis->setLabel("percentage");
 	customPlot->xAxis->setLabel("log10 of characteristic chemical times [s]");
+	customPlot->setMinimumWidth(450);
+	customPlot->setMinimumHeight(300);
 
 	customPlot->replot();
 	customPlot->show();	
@@ -1176,24 +1183,10 @@ void Window_ROPA::Plot_FluxAnalysis()
 		flux_analysis.GloballyAnalyze( important_indices, 0 );
 		flux_analysis.CalculateThickness();
 
-		boost::filesystem::path stoichiometrix_matrix = output_folder_ / "StoichiometricMatrix.txt";
 		boost::filesystem::path graph_txt = output_folder_ / "graph.txt";
 		boost::filesystem::path graph_png = output_folder_ / "graph.png";
 
 		flux_analysis.Plot(graph_txt.string());
-        flux_analysis.WriteStoichiometricMatrix(stoichiometrix_matrix.string());
-
-
-		/*
-		flux_analysis.OpenGraphFile("Graph.txt");
-
-		std::vector<unsigned int> important_indices;
-		important_indices.push_back(index_of_species);
-		flux_analysis.Analyze( important_indices, 0 );	
-		flux_analysis.CloseGraphFile();
-		*/
-
-
 
         #ifdef __linux__
 
@@ -1205,18 +1198,15 @@ void Window_ROPA::Plot_FluxAnalysis()
 
         #elif defined _WIN32 || defined _WIN64
 
-    //      boost::filesystem::path irfanview_exe = exe_folder_.branch_path() / "external" / "IrfanView" / "i_view32.exe";
-    //      boost::filesystem::path graphviz_exe  = exe_folder_.branch_path() / "external" / "Graphviz2.30" / "bin" / "dot";
-
-    //      std::string graphviz_command  = "\"" + graphviz_exe.string() + "\"" + " -Tpng " + "\"" + graph_txt.string() + "\"" + " -o " + "\"" + graph_png.string() + "\"";
-    //		std::string irfanview_command = "START /MIN " + irfanview_exe.string() + " " + graph_png.string();
-    //		std::string irfanview_command = irfanview_exe.string() + " " + graph_png.string();
+			std::string graph_png_quoted = "\"" + graph_png.string() + "\"";
+			std::string graph_txt_quoted = "\"" + graph_txt.string() + "\"";
     
-			std::string graphviz_command  = "dot  -Tpng \"" + graph_txt.string() + "\"" + " -o " + "\"" + graph_png.string() + "\"";
-			std::string irfanview_command = "START /MIN i_view32.exe \"" + graph_png.string()+ "\"";
+			std::string graphviz_command = "dot  -Tpng " + graph_txt_quoted + " -o " + graph_png_quoted;
+			std::string irfanview_command = "START /MIN i_view32.exe " + graph_png_quoted;
 
             system(graphviz_command.c_str());
     		system(irfanview_command.c_str());
+
         #endif
 	}
 

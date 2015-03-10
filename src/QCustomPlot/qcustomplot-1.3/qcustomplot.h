@@ -2741,9 +2741,8 @@ class QCP_LIB_DECL QCPBarsGroup : public QObject
 {
   Q_OBJECT
   /// \cond INCLUDE_QPROPERTIES
-  //Comment: Cuoci eliminated this
-  //Q_PROPERTY(SpacingType spacingType READ spacingType WRITE setSpacingType)
-  //Q_PROPERTY(double spacing READ spacing WRITE setSpacing)
+  Q_PROPERTY(SpacingType spacingType READ spacingType WRITE setSpacingType)
+  Q_PROPERTY(double spacing READ spacing WRITE setSpacing)
   /// \endcond
 public:
   /*!
@@ -2764,9 +2763,8 @@ public:
   double spacing() const { return mSpacing; }
   
   // setters:
-  //Comment: Cuoci eliminated this
-  //void setSpacingType(SpacingType spacingType);
-  //void setSpacing(double spacing);
+  void setSpacingType(SpacingType spacingType);
+  void setSpacing(double spacing);
   
   // non-virtual methods:
   QList<QCPBars*> bars() const { return mBars; }

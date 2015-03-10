@@ -83,7 +83,7 @@ void QtOpenSMOKE_PostProcessor::ClickSelectResultsPushButton()
 	{
 		QFileDialog dialog(this);
 		dialog.setFileMode(QFileDialog::Directory);
-		output_folder_name = dialog.getExistingDirectory(this, "Select the folder containing the Output.xml file", default_folder_results_);
+		output_folder_name = QDir::toNativeSeparators(dialog.getExistingDirectory(this, "Select the folder containing the Output.xml file", default_folder_results_));
 	}
 
 	if ( data_->ReadFileResults(output_folder_name) == true)
@@ -103,7 +103,7 @@ void QtOpenSMOKE_PostProcessor::ClickSelectMechanismPushButton()
 	{
 		QFileDialog dialog(this);
 		dialog.setFileMode(QFileDialog::Directory);
-		folder_name = dialog.getExistingDirectory(this, "Select the folder containing the kinetics.xml file", default_folder_mechanism_);
+		folder_name = QDir::toNativeSeparators(dialog.getExistingDirectory(this, "Select the folder containing the kinetics.xml file", default_folder_mechanism_));
 	}
 
 	if ( data_->ReadKineticMechanism(folder_name) == true)
