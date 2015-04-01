@@ -67,6 +67,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
+    <IncludePath>C:\Development\MyCodes\OpenSMOKEpp\source;C:\Development\ExternalNumericalLibraries\Boost\boost_1_57_0\src;C:\Development\ExternalNumericalLibraries\RapidXML\rapidxml-1.13;C:\Development\ExternalNumericalLibraries\Eigen\Eigen3.2;C:\Development\MyCodes\OpenSMOKEppPostProcessor\src\QCustomPlot\qcustomplot-1.3;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
@@ -116,8 +117,8 @@
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
-      <OutputFile>..\..\..\exe\windows\$(Configuration)\$(ProjectName)_$(Platform).exe</OutputFile>
-      <AdditionalLibraryDirectories>$(QTDIR)\lib;C:\Development\ExternalNumericalLibraries\Boost\boost_1_57_0\lib64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <OutputFile>..\..\..\..\exe\windows\Release\$(Platform)\OpenSMOKE_PostProcessor.exe</OutputFile>
+      <AdditionalLibraryDirectories>$(QTDIR)\lib;C:\Development\ExternalNumericalLibraries\Boost\boost_1_57_0\lib32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <AdditionalDependencies>qtmain.lib;Qt5Core.lib;Qt5Gui.lib;Qt5PrintSupport.lib;Qt5Widgets.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
@@ -132,7 +133,7 @@
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
-      <OutputFile>..\..\..\..\exe\windows\$(Configuration)\$(ProjectName)_$(Platform).exe</OutputFile>
+      <OutputFile>..\..\..\..\exe\windows\Release\$(Platform)\OpenSMOKE_PostProcessor.exe</OutputFile>
       <AdditionalLibraryDirectories>$(QTDIR)\lib;C:\Development\ExternalNumericalLibraries\Boost\boost_1_57_0\lib64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <AdditionalDependencies>qtmain.lib;Qt5Core.lib;Qt5Gui.lib;Qt5PrintSupport.lib;Qt5Widgets.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -551,7 +552,7 @@
   </ImportGroup>
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties MocDir=".\GeneratedFiles\$(ConfigurationName)" UicDir=".\GeneratedFiles" RccDir=".\GeneratedFiles" lupdateOptions="" lupdateOnBuild="0" lreleaseOptions="" Qt5Version_x0020_Win32="QT54" Qt5Version_x0020_x64="QT54" MocOptions="" />
+      <UserProperties MocDir=".\GeneratedFiles\$(ConfigurationName)" UicDir=".\GeneratedFiles" RccDir=".\GeneratedFiles" lupdateOptions="" lupdateOnBuild="0" lreleaseOptions="" Qt5Version_x0020_Win32="QT54_32bit" Qt5Version_x0020_x64="QT54" MocOptions="" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>
