@@ -2,11 +2,11 @@
 # Please, modify the paths reported below
 ######################################################################
 
-INCLUDE_BOOST = $(HOME)/NumericalLibraries/Boost/boost_1_55_0/include
+INCLUDE_BOOST = $(HOME)/NumericalLibraries/Boost/boost_1_57_0/include
 INCLUDE_RAPIDXML = $(HOME)/NumericalLibraries/RapidXML/rapidxml-1.13
 INCLUDE_EIGEN = $(HOME)/NumericalLibraries/Eigen/eigen-3.2
 INCLUDE_OPENSMOKEPP = ../../../OpenSMOKEpp/source
-LIB_BOOST = $(HOME)/NumericalLibraries/Boost/boost_1_55_0/lib
+LIB_BOOST = $(HOME)/NumericalLibraries/Boost/boost_1_57_0/lib
 
 ######################################################################
 
@@ -21,8 +21,8 @@ QT += widgets uitools printsupport
 CONFIG += qt release core gui printsupport
 TEMPLATE = app
 TARGET =  OpenSMOKEppPostProcessor_64bit_Release
-DEPENDPATH +=  ../../src  ../../src/forms ../../src/QCustomPlot/qcustomplot-1.2 
-INCLUDEPATH += ../../src  ../../src/forms ../../src/QCustomPlot/qcustomplot-1.2
+DEPENDPATH +=  ../../src  ../../src/forms ../../src/QCustomPlot/qcustomplot-1.3 
+INCLUDEPATH += ../../src  ../../src/forms ../../src/QCustomPlot/qcustomplot-1.3
 
 QMAKE_LFLAGS += 
 
@@ -47,7 +47,7 @@ HEADERS += ../../src/Profiles_Database.h \
            ../../src/window_sensitivities.h \
            ../../src/window_zoom_2dplot.h \
            ../../src/xyplot.h \
-           ../../src/QCustomPlot/qcustomplot-1.2/qcustomplot.h
+           ../../src/QCustomPlot/qcustomplot-1.3/qcustomplot.h
 
 #Forms (.ui)
 FORMS += ../../src/forms/qtopensmoke_postprocessor.ui \
@@ -66,7 +66,7 @@ SOURCES += ../../src/main.cpp \
            ../../src/window_sensitivities.cpp \
            ../../src/window_zoom_2dplot.cpp \
            ../../src/xyplot.cpp \
-           ../../src/QCustomPlot/qcustomplot-1.2/qcustomplot.cpp
+           ../../src/QCustomPlot/qcustomplot-1.3/qcustomplot.cpp
 
 LIBS    += -L$${LIB_BOOST} -lboost_date_time -lboost_filesystem -lboost_program_options -lboost_system -lboost_regex
 
