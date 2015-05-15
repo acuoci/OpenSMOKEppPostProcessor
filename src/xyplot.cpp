@@ -16,7 +16,7 @@
 |                                                                         |
 |   This file is part of OpenSMOKE++PostProcessor.                        |
 |                                                                         |
-|	License                                                               |
+|	License                                                           |
 |                                                                         |
 |   Copyright(C) 2014, 2013  Alberto Cuoci                                |
 |   OpenSMOKE++PostProcessor is free software: you can redistribute it    |
@@ -38,6 +38,12 @@
 #include <QMessageBox>
 #include <QMenu>
 #include <QFileDialog>
+
+#if QTVERSION == 4
+#include <QDesktopWidget>
+#elif QTVERSION == 5
+#endif
+
 #include <iostream>
 #include <fstream>
 #include <sstream>

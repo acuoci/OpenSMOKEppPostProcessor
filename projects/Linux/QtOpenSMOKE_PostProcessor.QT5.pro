@@ -2,11 +2,11 @@
 # Please, modify the paths reported below
 ######################################################################
 
-INCLUDE_BOOST = $(HOME)/NumericalLibraries/Boost/boost_1_57_0/include
+INCLUDE_BOOST = $(HOME)/NumericalLibraries/Boost/boost_1_58_0/include
 INCLUDE_RAPIDXML = $(HOME)/NumericalLibraries/RapidXML/rapidxml-1.13
 INCLUDE_EIGEN = $(HOME)/NumericalLibraries/Eigen/eigen-3.2
 INCLUDE_OPENSMOKEPP = ../../../OpenSMOKEpp/source
-LIB_BOOST = $(HOME)/NumericalLibraries/Boost/boost_1_57_0/lib
+LIB_BOOST = $(HOME)/NumericalLibraries/Boost/boost_1_58_0/lib
 
 ######################################################################
 
@@ -17,10 +17,11 @@ LIB_BOOST = $(HOME)/NumericalLibraries/Boost/boost_1_57_0/lib
 # DO NOT CHANGE THE LINES BELOW
 ################################################################################
 
+QMAKE_CXXFLAGS += -DQTVERSION=5 
 QT += widgets uitools printsupport
 CONFIG += qt release core gui printsupport
 TEMPLATE = app
-TARGET =  OpenSMOKEppPostProcessor_64bit_Release
+TARGET =  OpenSMOKEpp_PostProcessor_QT5.sh
 DEPENDPATH +=  ../../src  ../../src/forms ../../src/QCustomPlot/qcustomplot-1.3 
 INCLUDEPATH += ../../src  ../../src/forms ../../src/QCustomPlot/qcustomplot-1.3
 

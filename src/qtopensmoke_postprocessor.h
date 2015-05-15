@@ -16,7 +16,7 @@
 |                                                                         |
 |   This file is part of OpenSMOKE++PostProcessor.                        |
 |                                                                         |
-|	License                                                               |
+|	License                                                           |
 |                                                                         |
 |   Copyright(C) 2014, 2013  Alberto Cuoci                                |
 |   OpenSMOKE++PostProcessor is free software: you can redistribute it    |
@@ -38,8 +38,13 @@
 #define QTOPENSMOKE_POSTPROCESSOR_H
 
 #include <boost/filesystem.hpp>
-//#include <QtGui/QApplication>
+
+#if QTVERSION == 4
+#include <QtGui/QApplication>
+#elif QTVERSION == 5
 #include <QtWidgets/QApplication>
+#endif
+
 #include "ui_qtopensmoke_postprocessor.h"
 #include "rapidxml.hpp"
 

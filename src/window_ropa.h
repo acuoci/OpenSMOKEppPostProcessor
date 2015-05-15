@@ -16,7 +16,7 @@
 |                                                                         |
 |   This file is part of OpenSMOKE++PostProcessor.                        |
 |                                                                         |
-|	License                                                               |
+|	License                                                           |
 |                                                                         |
 |   Copyright(C) 2014, 2013  Alberto Cuoci                                |
 |   OpenSMOKE++PostProcessor is free software: you can redistribute it    |

@@ -16,7 +16,7 @@
 |                                                                         |
 |   This file is part of OpenSMOKE++PostProcessor.                        |
 |                                                                         |
-|	License                                                               |
+|	License                                                           |
 |                                                                         |
 |   Copyright(C) 2014, 2013  Alberto Cuoci                                |
 |   OpenSMOKE++PostProcessor is free software: you can redistribute it    |
@@ -38,8 +38,13 @@
 #define QTOPENSMOKE_Sensitivities_Database_H
 
 #include <QObject>
-//#include <QtGui/QMainWindow>
+
+#if QTVERSION == 4
+#include <QtGui/QMainWindow>
+#elif QTVERSION == 5
 #include <QtWidgets/QMainWindow>
+#endif
+
 #include "rapidxml.hpp"
 
 class Profiles_Database;
