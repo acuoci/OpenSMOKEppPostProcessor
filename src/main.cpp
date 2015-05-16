@@ -44,9 +44,12 @@
 
 int main(int argc, char *argv[])
 { 
-    #ifdef __linux__
+    #ifdef __linux__ 
         boost::filesystem::path executable_file = boost::filesystem::system_complete(argv[0]);
         boost::filesystem::path executable_folder = executable_file.parent_path();
+	#elif __APPLE__ 
+		boost::filesystem::path executable_file = boost::filesystem::system_complete(argv[0]);
+		boost::filesystem::path executable_folder = executable_file.parent_path();
     #elif defined _WIN32 || defined _WIN64
         boost::filesystem::path executable_file = boost::filesystem::system_complete(argv[0]);
         boost::filesystem::path executable_folder = executable_file.parent_path();

@@ -1196,6 +1196,12 @@ void Window_ROPA::Plot_FluxAnalysis()
             system(graphviz_command.c_str());
             system(visualizer_command.c_str());
 
+
+			std::string graphviz_command = "dot -Tpng " + graph_txt.string() + " -o " + graph_png.string();
+
+			system(graphviz_command.c_str());
+			system(visualizer_command.c_str());
+
         #elif defined _WIN32 || defined _WIN64
 
 			std::string graph_png_quoted = "\"" + graph_png.string() + "\"";
