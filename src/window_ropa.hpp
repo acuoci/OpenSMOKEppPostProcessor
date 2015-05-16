@@ -1196,8 +1196,10 @@ void Window_ROPA::Plot_FluxAnalysis()
             system(graphviz_command.c_str());
             system(visualizer_command.c_str());
 
+		#elif defined __APPLE__
 
 			std::string graphviz_command = "dot -Tpng " + graph_txt.string() + " -o " + graph_png.string();
+			std::string visualizer_command = "open " + graph_png.string() + " &";
 
 			system(graphviz_command.c_str());
 			system(visualizer_command.c_str());
