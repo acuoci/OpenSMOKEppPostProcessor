@@ -19,13 +19,17 @@ LIB_BOOST = $(HOME)/NumericalLibraries/Boost/boost_1_58_0/lib
 
 QMAKE_CXXFLAGS += -DQTVERSION=5 
 QT += widgets uitools printsupport
-CONFIG += qt release core gui printsupport
+CONFIG +=  qt release core gui printsupport
 TEMPLATE = app
-TARGET =  OpenSMOKEpp_PostProcessor_QT5.sh
+TARGET =  OpenSMOKE_PostProcessor.sh
 DEPENDPATH +=  ../../src  ../../src/forms ../../src/QCustomPlot/qcustomplot-1.3 
 INCLUDEPATH += ../../src  ../../src/forms ../../src/QCustomPlot/qcustomplot-1.3
 
 QMAKE_LFLAGS += 
+
+# Specifies where to find the libraries at run time
+QMAKE_RPATHDIR += @executable_path/../Frameworks
+QMAKE_LFLAGS_SONAME = -Wl,-install_name,@rpath/
 
 DESTDIR = ../../exe/linux
 MOC_DIR = moc
@@ -75,6 +79,8 @@ LIBS     += $${LIB_BOOST}/libboost_date_time.a       $${LIB_BOOST}/libboost_file
             $${LIB_BOOST}/libboost_program_options.a $${LIB_BOOST}/libboost_system.a \
 			$${LIB_BOOST}/libboost_regex.a           $${LIB_BOOST}/libboost_timer.a \
 			$${LIB_BOOST}/libboost_chrono.a
+
+#LIBS += /Users/acuoci/Qt5.4.1/5.4/clang_64/lib/libQt5Core.a /Users/acuoci/Qt5.4.1/5.4/clang_64/lib/libQt5Gui.a /Users/acuoci/Qt5.4.1/5.4/clang_64/lib/libQt5PrintSupport.a
 
 ##################################################
 # If MKL Support is needed, add the following line
