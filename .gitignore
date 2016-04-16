@@ -10,6 +10,8 @@ src/QCustomPlot/qcustomplot-0.9/
 *.dep
 .*.sw[op]
 *~
+*.VC.db
+*.VC.opendb
 
 #Microsoft Visual studio
 ########################
