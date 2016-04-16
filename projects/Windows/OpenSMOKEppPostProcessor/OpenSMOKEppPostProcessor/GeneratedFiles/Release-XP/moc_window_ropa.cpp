@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'window_ropa.h'
 **
-** Created by: The Qt Meta Object Compiler version 67 (Qt 5.4.1)
+** Created by: The Qt Meta Object Compiler version 67 (Qt 5.6.0)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
@@ -12,7 +12,7 @@
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'window_ropa.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
-#error "This file was generated using the moc from 5.4.1. It"
+#error "This file was generated using the moc from 5.6.0. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
@@ -20,11 +20,11 @@
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_Window_ROPA_t {
     QByteArrayData data[15];
-    char stringdata[288];
+    char stringdata0[288];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
-    qptrdiff(offsetof(qt_meta_stringdata_Window_ROPA_t, stringdata) + ofs \
+    qptrdiff(offsetof(qt_meta_stringdata_Window_ROPA_t, stringdata0) + ofs \
         - idx * sizeof(QByteArrayData)) \
     )
 static const qt_meta_stringdata_Window_ROPA_t qt_meta_stringdata_Window_ROPA = {
@@ -107,6 +107,7 @@ void Window_ROPA::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id,
 {
     if (_c == QMetaObject::InvokeMetaMethod) {
         Window_ROPA *_t = static_cast<Window_ROPA *>(_o);
+        Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->Plot_FormationRates(); break;
         case 1: _t->Plot_ReactionRates(); break;
@@ -141,7 +142,7 @@ const QMetaObject *Window_ROPA::metaObject() const
 void *Window_ROPA::qt_metacast(const char *_clname)
 {
     if (!_clname) return Q_NULLPTR;
-    if (!strcmp(_clname, qt_meta_stringdata_Window_ROPA.stringdata))
+    if (!strcmp(_clname, qt_meta_stringdata_Window_ROPA.stringdata0))
         return static_cast<void*>(const_cast< Window_ROPA*>(this));
     return QWidget::qt_metacast(_clname);
 }

@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'window_sensitivities.h'
 **
-** Created by: The Qt Meta Object Compiler version 67 (Qt 5.4.1)
+** Created by: The Qt Meta Object Compiler version 67 (Qt 5.6.0)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
@@ -12,7 +12,7 @@
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'window_sensitivities.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
-#error "This file was generated using the moc from 5.4.1. It"
+#error "This file was generated using the moc from 5.6.0. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
@@ -20,11 +20,11 @@
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_Window_Sensitivities_t {
     QByteArrayData data[10];
-    char stringdata[234];
+    char stringdata0[234];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
-    qptrdiff(offsetof(qt_meta_stringdata_Window_Sensitivities_t, stringdata) + ofs \
+    qptrdiff(offsetof(qt_meta_stringdata_Window_Sensitivities_t, stringdata0) + ofs \
         - idx * sizeof(QByteArrayData)) \
     )
 static const qt_meta_stringdata_Window_Sensitivities_t qt_meta_stringdata_Window_Sensitivities = {
@@ -91,6 +91,7 @@ void Window_Sensitivities::qt_static_metacall(QObject *_o, QMetaObject::Call _c,
 {
     if (_c == QMetaObject::InvokeMetaMethod) {
         Window_Sensitivities *_t = static_cast<Window_Sensitivities *>(_o);
+        Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->Clean_Reactions_List(); break;
         case 1: _t->Plot_Sensitivities_Profiles(); break;
@@ -120,7 +121,7 @@ const QMetaObject *Window_Sensitivities::metaObject() const
 void *Window_Sensitivities::qt_metacast(const char *_clname)
 {
     if (!_clname) return Q_NULLPTR;
-    if (!strcmp(_clname, qt_meta_stringdata_Window_Sensitivities.stringdata))
+    if (!strcmp(_clname, qt_meta_stringdata_Window_Sensitivities.stringdata0))
         return static_cast<void*>(const_cast< Window_Sensitivities*>(this));
     return QWidget::qt_metacast(_clname);
 }
