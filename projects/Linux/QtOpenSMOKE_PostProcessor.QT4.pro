@@ -2,11 +2,11 @@
 # Please, modify the paths reported below
 ######################################################################
 
-INCLUDE_BOOST = /software/chimica2/libraries/boost/boost-1.59.0-gcc-4.8.2/include
+INCLUDE_BOOST = /software/chimica2/libraries/boost/boost-1.60.0-gcc-4.8.2/include
 INCLUDE_RAPIDXML = /software/chimica2/libraries/rapidxml/rapidxml-1.13
-INCLUDE_EIGEN = /software/chimica2/libraries/eigen/eigen-3.2.6
+INCLUDE_EIGEN = /software/chimica2/libraries/eigen/eigen-3.3-dev
 INCLUDE_OPENSMOKEPP = ../../../OpenSMOKEpp/source
-LIB_BOOST = /software/chimica2/libraries/boost/boost-1.59.0-gcc-4.8.2/lib
+LIB_BOOST = /software/chimica2/libraries/boost/boost-1.60.0-gcc-4.8.2/lib
 
 ######################################################################
 
@@ -22,8 +22,8 @@ QT += widgets uitools printsupport
 CONFIG += qt release core gui printsupport
 TEMPLATE = app
 TARGET =  OpenSMOKEpp_PostProcessor_QT4.sh
-DEPENDPATH +=  ../../src  ../../src/forms ../../src/QCustomPlot/qcustomplot-1.2 
-INCLUDEPATH += ../../src  ../../src/forms ../../src/QCustomPlot/qcustomplot-1.2
+DEPENDPATH +=  ../../src  ../../src/forms ../../src/QCustomPlot/qcustomplot-1.3.2 
+INCLUDEPATH += ../../src  ../../src/forms ../../src/QCustomPlot/qcustomplot-1.3.2
 
 QMAKE_LFLAGS += 
 
@@ -48,7 +48,7 @@ HEADERS += ../../src/Profiles_Database.h \
            ../../src/window_sensitivities.h \
            ../../src/window_zoom_2dplot.h \
            ../../src/xyplot.h \
-           ../../src/QCustomPlot/qcustomplot-1.2/qcustomplot.h
+           ../../src/QCustomPlot/qcustomplot-1.3.2/qcustomplot.h
 
 #Forms (.ui)
 FORMS += ../../src/forms/qtopensmoke_postprocessor.ui \
@@ -67,7 +67,7 @@ SOURCES += ../../src/main.cpp \
            ../../src/window_sensitivities.cpp \
            ../../src/window_zoom_2dplot.cpp \
            ../../src/xyplot.cpp \
-           ../../src/QCustomPlot/qcustomplot-1.2/qcustomplot.cpp
+           ../../src/QCustomPlot/qcustomplot-1.3.2/qcustomplot.cpp
 
 LIBS    += -L$${LIB_BOOST} -lboost_date_time -lboost_filesystem -lboost_program_options -lboost_system -lboost_regex
 
