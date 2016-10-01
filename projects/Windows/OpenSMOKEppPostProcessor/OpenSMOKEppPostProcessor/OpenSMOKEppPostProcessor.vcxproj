@@ -82,27 +82,27 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
-    <IncludePath>C:\Development\MyCodes\OpenSMOKEpp\source;C:\Development\ExternalNumericalLibraries\Boost\boost_1_60_0\boost_1_60_0;C:\Development\ExternalNumericalLibraries\RapidXML\rapidxml-1.13;C:\Development\ExternalNumericalLibraries\Eigen\Eigen3.2;C:\Development\MyCodes\OpenSMOKEppPostProcessor\src\QCustomPlot\qcustomplot-1.3.2;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Development\OpenSMOKEpp\OpenSMOKEpp\source;C:\Development\ExternalNumericalLibraries\Boost\boost_1_60_0\boost_1_60_0;C:\Development\ExternalNumericalLibraries\RapidXML\rapidxml-1.13;C:\Development\ExternalNumericalLibraries\Eigen\Eigen3.3;C:\Development\OpenSMOKEpp\OpenSMOKEppPostProcessor\src\QCustomPlot\qcustomplot-1.3.2;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
-    <IncludePath>C:\Development\MyCodes\OpenSMOKEpp\source;C:\Development\ExternalNumericalLibraries\Boost\boost_1_60_0\boost_1_60_0;C:\Development\ExternalNumericalLibraries\RapidXML\rapidxml-1.13;C:\Development\ExternalNumericalLibraries\Eigen\Eigen3.2;C:\Development\MyCodes\OpenSMOKEppPostProcessor\src\QCustomPlot\qcustomplot-1.3.2;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Development\OpenSMOKEpp\OpenSMOKEpp\source;C:\Development\ExternalNumericalLibraries\Boost\boost_1_60_0\boost_1_60_0;C:\Development\ExternalNumericalLibraries\RapidXML\rapidxml-1.13;C:\Development\ExternalNumericalLibraries\Eigen\Eigen3.3;C:\Development\OpenSMOKEpp\OpenSMOKEppPostProcessor\src\QCustomPlot\qcustomplot-1.3.2;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
-    <IncludePath>C:\Development\MyCodes\OpenSMOKEpp\source;C:\Development\ExternalNumericalLibraries\Boost\boost_1_60_0\boost_1_60_0;C:\Development\ExternalNumericalLibraries\RapidXML\rapidxml-1.13;C:\Development\ExternalNumericalLibraries\Eigen\Eigen3.2;C:\Development\MyCodes\OpenSMOKEppPostProcessor\src\QCustomPlot\qcustomplot-1.3.2;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Development\OpenSMOKEpp\OpenSMOKEpp\source;C:\Development\ExternalNumericalLibraries\Boost\boost_1_60_0\boost_1_60_0;C:\Development\ExternalNumericalLibraries\RapidXML\rapidxml-1.13;C:\Development\ExternalNumericalLibraries\Eigen\Eigen3.3;C:\Development\OpenSMOKEpp\OpenSMOKEppPostProcessor\src\QCustomPlot\qcustomplot-1.3.2;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release-XP|Win32'">
     <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
-    <IncludePath>C:\Development\MyCodes\OpenSMOKEpp\source;C:\Development\ExternalNumericalLibraries\Boost\boost_1_60_0\boost_1_60_0;C:\Development\ExternalNumericalLibraries\RapidXML\rapidxml-1.13;C:\Development\ExternalNumericalLibraries\Eigen\Eigen3.2;C:\Development\MyCodes\OpenSMOKEppPostProcessor\src\QCustomPlot\qcustomplot-1.3.2;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Development\OpenSMOKEpp\OpenSMOKEpp\source;C:\Development\ExternalNumericalLibraries\Boost\boost_1_60_0\boost_1_60_0;C:\Development\ExternalNumericalLibraries\RapidXML\rapidxml-1.13;C:\Development\ExternalNumericalLibraries\Eigen\Eigen3.3;C:\Development\OpenSMOKEpp\OpenSMOKEppPostProcessor\src\QCustomPlot\qcustomplot-1.3.2;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
-    <IncludePath>C:\Development\MyCodes\OpenSMOKEpp\source;C:\Development\ExternalNumericalLibraries\Boost\boost_1_60_0\boost_1_60_0;C:\Development\ExternalNumericalLibraries\RapidXML\rapidxml-1.13;C:\Development\ExternalNumericalLibraries\Eigen\Eigen3.2;C:\Development\MyCodes\OpenSMOKEppPostProcessor\src\QCustomPlot\qcustomplot-1.3.2;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Development\OpenSMOKEpp\OpenSMOKEpp\source;C:\Development\ExternalNumericalLibraries\Boost\boost_1_60_0\boost_1_60_0;C:\Development\ExternalNumericalLibraries\RapidXML\rapidxml-1.13;C:\Development\ExternalNumericalLibraries\Eigen\Eigen3.3;C:\Development\OpenSMOKEpp\OpenSMOKEppPostProcessor\src\QCustomPlot\qcustomplot-1.3.2;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release-XP|x64'">
     <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
-    <IncludePath>C:\Development\MyCodes\OpenSMOKEpp\source;C:\Development\ExternalNumericalLibraries\Boost\boost_1_60_0\boost_1_60_0;C:\Development\ExternalNumericalLibraries\RapidXML\rapidxml-1.13;C:\Development\ExternalNumericalLibraries\Eigen\Eigen3.2;C:\Development\MyCodes\OpenSMOKEppPostProcessor\src\QCustomPlot\qcustomplot-1.3.2;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Development\OpenSMOKEpp\OpenSMOKEpp\source;C:\Development\ExternalNumericalLibraries\Boost\boost_1_60_0\boost_1_60_0;C:\Development\ExternalNumericalLibraries\RapidXML\rapidxml-1.13;C:\Development\ExternalNumericalLibraries\Eigen\Eigen3.3;C:\Development\OpenSMOKEpp\OpenSMOKEppPostProcessor\src\QCustomPlot\qcustomplot-1.3.2;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -765,7 +765,7 @@
   </ImportGroup>
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties MocDir=".\GeneratedFiles\$(ConfigurationName)" UicDir=".\GeneratedFiles" RccDir=".\GeneratedFiles" lupdateOptions="" lupdateOnBuild="0" lreleaseOptions="" Qt5Version_x0020_Win32="Qt56-Win32" Qt5Version_x0020_x64="Qt56-x64" MocOptions="" />
+      <UserProperties MocDir=".\GeneratedFiles\$(ConfigurationName)" UicDir=".\GeneratedFiles" RccDir=".\GeneratedFiles" lupdateOptions="" lupdateOnBuild="0" lreleaseOptions="" Qt5Version_x0020_Win32="msvc2015" Qt5Version_x0020_x64="msvc2015_64" MocOptions="" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>
