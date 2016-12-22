@@ -16,7 +16,7 @@
 |                                                                         |
 |   This file is part of OpenSMOKE++PostProcessor.                        |
 |                                                                         |
-|	License                                                           |
+|	License                                                               |
 |                                                                         |
 |   Copyright(C) 2014, 2013  Alberto Cuoci                                |
 |   OpenSMOKE++PostProcessor is free software: you can redistribute it    |
@@ -127,7 +127,7 @@ void Widget_Horizontal_Bars::draw(QPainter *painter)
 	painter->drawText(-w_window/2.,0.,w_window,h_window/10., Qt::AlignVCenter| Qt::AlignCenter, mainComment);
 
 	// Set rectangles
-	for(int i=0;i<n_rectangles;i++)
+	for(int i=0;i<qMin(max_bars, n_rectangles);i++)
 	{
 		if (x_coordinates[i] >= 0.)	
 		{
@@ -280,12 +280,12 @@ void Widget_Horizontal_Bars::setRectangles(const std::vector<double>   _r_coordi
 	r_coordinates		= _r_coordinates;
 	r_strings			= _names;
 	n_total_rectangles	= r_coordinates.size();
-	n_rectangles		= qMin(max_bars, n_total_rectangles);
+	n_rectangles		= n_total_rectangles;
 
 	if (n_rectangles < max_bars)
 		resize(width(), height()*double(n_rectangles)/double(max_bars));
 
-	h_rectangles = double(0.90*h_window)/double(n_rectangles) * 0.90;
+	h_rectangles = double(0.90*h_window)/double(qMin(max_bars, n_rectangles)) * 0.90;
 
 	x_coordinates.resize(n_rectangles);
 	y_coordinates.resize(n_rectangles);
