@@ -4,7 +4,7 @@
 
 INCLUDE_BOOST = /software/chimica2/libraries/boost/boost-1.60.0-gcc-4.8.2/include
 INCLUDE_RAPIDXML = /software/chimica2/libraries/rapidxml/rapidxml-1.13
-INCLUDE_EIGEN = /software/chimica2/libraries/eigen/eigen-3.3-dev
+INCLUDE_EIGEN = /software/chimica2/libraries/eigen/eigen-3.3.3
 INCLUDE_OPENSMOKEPP = ../../../OpenSMOKEpp/source
 LIB_BOOST = /software/chimica2/libraries/boost/boost-1.60.0-gcc-4.8.2/lib
 
