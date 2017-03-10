@@ -679,7 +679,7 @@ void Window_ROPA::AnalyzeCharacteristicTimes()
 
 	QCustomPlot* customPlot = new QCustomPlot();
 	QCPBars *myBars = new QCPBars(customPlot->xAxis, customPlot->yAxis);
-	customPlot->addPlottable(myBars);
+	//customPlot->addPlottable(myBars);
 	myBars->setName("Characteristic chemical times");
 	QVector<double> keyData;
 	keyData << -12 <<-11 << -10 << -9 << -8 << -7 << -6 << -5 << -4 << -3 << -2 << -1 << 0 << 1 << 2 << 3;	
@@ -688,7 +688,13 @@ void Window_ROPA::AnalyzeCharacteristicTimes()
 
 	customPlot->xAxis->setRangeLower(-12.);
 	customPlot->xAxis->setRangeUpper(4.);
-	customPlot->xAxis->setTickStep(2.);
+	//customPlot->xAxis->setTickStep(2.);
+
+	QSharedPointer<QCPAxisTickerFixed> fixedTicker(new QCPAxisTickerFixed);
+	customPlot->xAxis->setTicker(fixedTicker);
+	fixedTicker->setTickStep(2.0);
+	fixedTicker->setScaleStrategy(QCPAxisTickerFixed::ssNone);
+
 	customPlot->yAxis->setLabel("percentage");
 	customPlot->xAxis->setLabel("log10 of characteristic chemical times [s]");
 	customPlot->setMinimumWidth(450);
@@ -1167,7 +1173,7 @@ void Window_ROPA::Plot_FluxAnalysis()
 		data_->kineticsMapXML->ReactionRates(c);
 		data_->kineticsMapXML->GetReactionRates(&r);
 
-		OpenSMOKE::FluxAnalysisMap<double> flux_analysis(*data_->thermodynamicsMapXML, *data_->kineticsMapXML);
+		OpenSMOKE::FluxAnalysisMap flux_analysis(*data_->thermodynamicsMapXML, *data_->kineticsMapXML);
 		flux_analysis.SetDestructionAnalysis(ui.radioButton_FluxAnalysis_Destruction->isChecked());
 		flux_analysis.SetNormalThickness(ui.radioButton_Thickness_Relative->isChecked());
 		flux_analysis.SetNormalTags(ui.radioButton_Labels_Relative->isChecked());

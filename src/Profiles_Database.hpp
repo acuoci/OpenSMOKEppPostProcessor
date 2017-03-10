@@ -70,8 +70,8 @@ bool Profiles_Database::ReadKineticMechanism(const QString& folder_name)
 		std::vector<char> xml_string; 
         OpenSMOKE::OpenInputFileXML(doc, xml_string, path_mechanism);
 
-		thermodynamicsMapXML = new OpenSMOKE::ThermodynamicsMap_CHEMKIN<double>(doc); 
-		kineticsMapXML = new OpenSMOKE::KineticsMap_CHEMKIN<double>(*thermodynamicsMapXML, doc); 
+		thermodynamicsMapXML = new OpenSMOKE::ThermodynamicsMap_CHEMKIN(doc); 
+		kineticsMapXML = new OpenSMOKE::KineticsMap_CHEMKIN(*thermodynamicsMapXML, doc); 
 	}
 
 	if (thermodynamicsMapXML->NumberOfSpecies() == omega.size())

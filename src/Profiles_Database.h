@@ -50,9 +50,7 @@
 
 namespace OpenSMOKE
 {
-	template<typename T>
 	class ThermodynamicsMap_CHEMKIN;
-	template<typename T>
 	class KineticsMap_CHEMKIN;
 }
 
@@ -94,8 +92,8 @@ public:
 	rapidxml::xml_document<> xml_main_input;
 	std::vector<char> xml_main_input_string;
 
-	OpenSMOKE::ThermodynamicsMap_CHEMKIN<double>* thermodynamicsMapXML; 
-	OpenSMOKE::KineticsMap_CHEMKIN<double>* kineticsMapXML; 
+	OpenSMOKE::ThermodynamicsMap_CHEMKIN* thermodynamicsMapXML; 
+	OpenSMOKE::KineticsMap_CHEMKIN* kineticsMapXML; 
 
 	bool iSensitivityEnabled_;
 	bool iROPAEnabled_;

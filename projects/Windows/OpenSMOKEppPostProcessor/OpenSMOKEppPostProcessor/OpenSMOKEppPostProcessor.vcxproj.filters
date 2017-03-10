@@ -39,6 +39,11 @@
     <Filter Include="Source Files\qcustomplot">
       <UniqueIdentifier>{261bf6c4-6660-47f1-a683-1cb175c60986}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Generated Files\Release-XP">
+      <UniqueIdentifier>{71d1469d-30ec-42ed-b70d-9e1221f2357c}</UniqueIdentifier>
+      <Extensions>cpp;moc</Extensions>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GeneratedFiles\qrc_opensmokepppostprocessor.cpp">
@@ -107,14 +112,17 @@
     <ClCompile Include="..\..\..\..\src\xyplot.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\src\QCustomPlot\qcustomplot-2.0.0\qcustomplot.cpp">
+      <Filter>Source Files\qcustomplot</Filter>
+    </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_qcustomplot.cpp">
       <Filter>Generated Files\Debug</Filter>
     </ClCompile>
     <ClCompile Include="GeneratedFiles\Release\moc_qcustomplot.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\QCustomPlot\qcustomplot-1.3\qcustomplot.cpp">
-      <Filter>Source Files\qcustomplot</Filter>
+    <ClCompile Include="GeneratedFiles\Release-XP\moc_qcustomplot.cpp">
+      <Filter>Generated Files\Release-XP</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -163,7 +171,7 @@
     <CustomBuild Include="..\..\..\..\src\forms\window_zoom_2dplot.ui">
       <Filter>Form Files</Filter>
     </CustomBuild>
-    <CustomBuild Include="..\..\..\..\src\QCustomPlot\qcustomplot-1.3\qcustomplot.h">
+    <CustomBuild Include="..\..\..\..\src\QCustomPlot\qcustomplot-2.0.0\qcustomplot.h">
       <Filter>Header Files\qcustomplot</Filter>
     </CustomBuild>
   </ItemGroup>
