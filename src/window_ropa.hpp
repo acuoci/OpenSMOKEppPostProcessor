@@ -679,7 +679,7 @@ void Window_ROPA::AnalyzeCharacteristicTimes()
 
 	QCustomPlot* customPlot = new QCustomPlot();
 	QCPBars *myBars = new QCPBars(customPlot->xAxis, customPlot->yAxis);
-	//customPlot->addPlottable(myBars);
+	
 	myBars->setName("Characteristic chemical times");
 	QVector<double> keyData;
 	keyData << -12 <<-11 << -10 << -9 << -8 << -7 << -6 << -5 << -4 << -3 << -2 << -1 << 0 << 1 << 2 << 3;	
@@ -688,7 +688,6 @@ void Window_ROPA::AnalyzeCharacteristicTimes()
 
 	customPlot->xAxis->setRangeLower(-12.);
 	customPlot->xAxis->setRangeUpper(4.);
-	//customPlot->xAxis->setTickStep(2.);
 
 	QSharedPointer<QCPAxisTickerFixed> fixedTicker(new QCPAxisTickerFixed);
 	customPlot->xAxis->setTicker(fixedTicker);
