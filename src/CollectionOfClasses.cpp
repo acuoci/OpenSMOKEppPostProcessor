@@ -48,12 +48,12 @@
 
 // OpenSMOKE++ Library
 #include "math/PhysicalConstants.h"
-#include "thermo/ThermoPolicy_CHEMKIN.h"
-#include "kinetics/ReactionPolicy_CHEMKIN.h"
+#include "kernel/thermo/ThermoPolicy_CHEMKIN.h"
+#include "kernel/kinetics/ReactionPolicy_CHEMKIN.h"
 #include "maps/ThermodynamicsMap_CHEMKIN.h"
 #include "maps/TransportPropertiesMap_CHEMKIN.h"
 #include "maps/KineticsMap_CHEMKIN.h"
-#include "kinetics/KineticsUtilityFunctions.h"
+#include "kernel/kinetics/KineticsUtilityFunctions.h"
 #include "maps/FluxAnalysisMap.h"
 #include "Utilities.h"
 
