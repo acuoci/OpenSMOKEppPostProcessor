@@ -121,7 +121,7 @@ void Sensitivities_Database::ReadParentFile()
 				unsigned int local_index = j+1-data_->kineticsMapXML->NumberOfReactions();
 				if (local_index <= data_->kineticsMapXML->NumberOfFallOffReactions())
 				{
-					unsigned int global_index = data_->kineticsMapXML->indices_of_falloff_reactions()[local_index];
+					unsigned int global_index = data_->kineticsMapXML->IndicesOfFalloffReactions()[local_index-1];
 					std::stringstream index;
 					index << global_index;
 					std::string tmp = "R" + index.str() + "(inf): " + data_->reaction_strings_[global_index-1];
@@ -129,7 +129,7 @@ void Sensitivities_Database::ReadParentFile()
 				}
 				else
 				{
-					unsigned int global_index = data_->kineticsMapXML->indices_of_cabr_reactions()[local_index-data_->kineticsMapXML->NumberOfReactions()];
+					unsigned int global_index = data_->kineticsMapXML->IndicesOfCabrReactions()[local_index-data_->kineticsMapXML->NumberOfReactions()-1];
 					std::stringstream index;
 					index << global_index;
 					std::string tmp = "R" + index.str() + "(inf): " + data_->reaction_strings_[global_index-1];
