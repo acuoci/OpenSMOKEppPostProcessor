@@ -35,6 +35,7 @@
 \*-----------------------------------------------------------------------*/
 
 #include "window_ropa.h"
+#include "math/OpenSMOKEUtilities.h"
 
 Window_ROPA::Window_ROPA(QWidget *parent)
 	: QWidget(parent)
@@ -212,7 +213,7 @@ void Window_ROPA::Plot_FormationRates()
 			
 			// Calculates mole fractions
 			double MWmix;
-			data_->thermodynamicsMapXML->MoleFractions_From_MassFractions(x, MWmix, omega);
+			data_->thermodynamicsMapXML->MoleFractions_From_MassFractions(x.GetHandle(), MWmix, omega.GetHandle());
 
 			// Calculates concentrations
 			const double P_Pa = data_->additional[data_->index_P][i];
@@ -227,8 +228,8 @@ void Window_ROPA::Plot_FormationRates()
 			data_->thermodynamicsMapXML->SetPressure(P_Pa);
 
 			data_->kineticsMapXML->KineticConstants();
-			data_->kineticsMapXML->ReactionRates(c);
-			data_->kineticsMapXML->ProductionAndDestructionRates(&P, &D);			// kmol/m3/s
+			data_->kineticsMapXML->ReactionRates(c.GetHandle());
+			data_->kineticsMapXML->ProductionAndDestructionRates(P.GetHandle(), D.GetHandle());			// kmol/m3/s
 
 			if (ui.radioButton_formation_characteristictimes->isChecked() == true)
 			{
@@ -242,8 +243,8 @@ void Window_ROPA::Plot_FormationRates()
 			{
 				if (ui.radioButton_formation_mass->isChecked() == true)
 				{
-					ElementByElementProduct(P,data_->thermodynamicsMapXML->MW(), &P);
-					ElementByElementProduct(D,data_->thermodynamicsMapXML->MW(), &D);
+					OpenSMOKE::ElementByElementProduct(P.Size(), P.GetHandle(), data_->thermodynamicsMapXML->MWs().data(), P.GetHandle());
+					OpenSMOKE::ElementByElementProduct(D.Size(), D.GetHandle(), data_->thermodynamicsMapXML->MWs().data(), D.GetHandle());
 				}
 		
 				for (unsigned int j=0;j<formation_rates_to_plot.Size();j++)
@@ -335,7 +336,7 @@ void Window_ROPA::Plot_ROPA_BarChart()
 			
 			// Calculates mole fractions
 			double MWmix;
-			data_->thermodynamicsMapXML->MoleFractions_From_MassFractions(x, MWmix, omega);
+			data_->thermodynamicsMapXML->MoleFractions_From_MassFractions(x.GetHandle(), MWmix, omega.GetHandle());
 
 			// Calculates concentrations
 			const double P_Pa = data_->additional[data_->index_P][index];
@@ -350,7 +351,7 @@ void Window_ROPA::Plot_ROPA_BarChart()
 			data_->thermodynamicsMapXML->SetPressure(P_Pa);
 
 			data_->kineticsMapXML->KineticConstants();
-			data_->kineticsMapXML->ReactionRates(c);
+			data_->kineticsMapXML->ReactionRates(c.GetHandle());
 
 			// Ropa
 			OpenSMOKE::ROPA_Data ropa;
@@ -422,7 +423,7 @@ void Window_ROPA::Plot_ROPA_BarChart()
 			
 				// Calculates mole fractions
 				double MWmix;
-				data_->thermodynamicsMapXML->MoleFractions_From_MassFractions(x, MWmix, omega);
+				data_->thermodynamicsMapXML->MoleFractions_From_MassFractions(x.GetHandle(), MWmix, omega.GetHandle());
 
 				// Calculates concentrations
 				const double P_Pa = data_->additional[data_->index_P][j];
@@ -437,7 +438,7 @@ void Window_ROPA::Plot_ROPA_BarChart()
 				data_->thermodynamicsMapXML->SetPressure(P_Pa);
 
 				data_->kineticsMapXML->KineticConstants();
-				data_->kineticsMapXML->ReactionRates(c);
+				data_->kineticsMapXML->ReactionRates(c.GetHandle());
 
 				// Ropa
 				OpenSMOKE::ROPA_Data ropa;
@@ -496,11 +497,10 @@ void Window_ROPA::PlotShortestChemicalTime()
 	OpenSMOKE::OpenSMOKEVectorDouble x(data_->thermodynamicsMapXML->NumberOfSpecies());
 	OpenSMOKE::OpenSMOKEVectorDouble omega(data_->thermodynamicsMapXML->NumberOfSpecies());
 	OpenSMOKE::OpenSMOKEVectorDouble c(data_->thermodynamicsMapXML->NumberOfSpecies());
-	OpenSMOKE::OpenSMOKEMatrixDouble dR_over_dc(data_->thermodynamicsMapXML->NumberOfSpecies(),data_->thermodynamicsMapXML->NumberOfSpecies());
-	OpenSMOKE::OpenSMOKEVectorDouble P(dR_over_dc.Rows());
-	OpenSMOKE::OpenSMOKEVectorDouble D(dR_over_dc.Rows());
-	OpenSMOKE::OpenSMOKEVectorDouble tau(dR_over_dc.Rows());
-	Eigen::MatrixXd A(dR_over_dc.Rows(),dR_over_dc.Rows());
+	Eigen::MatrixXd dR_over_dc(data_->thermodynamicsMapXML->NumberOfSpecies(),data_->thermodynamicsMapXML->NumberOfSpecies());
+	OpenSMOKE::OpenSMOKEVectorDouble P(dR_over_dc.rows());
+	OpenSMOKE::OpenSMOKEVectorDouble D(dR_over_dc.rows());
+	OpenSMOKE::OpenSMOKEVectorDouble tau(dR_over_dc.rows());
 
 	QVector<double> tau_min_jacobian(data_->number_of_abscissas_);
 	QVector<double> tau_min_destruction_rate(data_->number_of_abscissas_);
@@ -512,7 +512,7 @@ void Window_ROPA::PlotShortestChemicalTime()
 			
 		// Calculates mole fractions
 		double MWmix;
-		data_->thermodynamicsMapXML->MoleFractions_From_MassFractions(x, MWmix, omega);
+		data_->thermodynamicsMapXML->MoleFractions_From_MassFractions(x.GetHandle(), MWmix, omega.GetHandle());
 
 		// Calculates concentrations
 		const double P_Pa = data_->additional[data_->index_P][j];
@@ -527,11 +527,11 @@ void Window_ROPA::PlotShortestChemicalTime()
 		data_->thermodynamicsMapXML->SetPressure(P_Pa);
 
 		data_->kineticsMapXML->KineticConstants();
-		data_->kineticsMapXML->ReactionRates(c);
-		data_->kineticsMapXML->ProductionAndDestructionRates(&P, &D);			// kmol/m3/s
+		data_->kineticsMapXML->ReactionRates(c.GetHandle());
+		data_->kineticsMapXML->ProductionAndDestructionRates(P.GetHandle(), D.GetHandle());			// kmol/m3/s
 
 		tau_min_destruction_rate[j] = 1e16;
-		for(unsigned int i=1;i<=dR_over_dc.Rows();i++)
+		for(unsigned int i=1;i<=dR_over_dc.rows();i++)
 		{
 			if (c[i] > 1.e-48)
 			{
@@ -540,12 +540,10 @@ void Window_ROPA::PlotShortestChemicalTime()
 			}
 		}
 
-		data_->kineticsMapXML->DerivativesOfFormationRates(c, omega, &dR_over_dc);
+		data_->kineticsMapXML->DerivativesOfFormationRates(c.GetHandle(), omega.GetHandle(), &dR_over_dc);
 	
 		// Calculates the eigenvectors
-		for(unsigned int i=0;i<dR_over_dc.Rows();i++)
-			for(unsigned int j=0;j<dR_over_dc.Rows();j++)
-				A(i,j) = dR_over_dc[i+1][j+1];
+		Eigen::MatrixXd A = dR_over_dc;
 
 		if (ui.radioButton_eigenvalues->isChecked() == true)
 		{
@@ -555,14 +553,14 @@ void Window_ROPA::PlotShortestChemicalTime()
 				abort();
 			}
 		
-			for(unsigned int i=0;i<dR_over_dc.Rows();i++)
+			for(unsigned int i=0;i<dR_over_dc.rows();i++)
 				tau[i+1] = 1./std::max(1e-12, fabs(eigensolver.eigenvalues().real()[i]));
 			tau_min_jacobian[j] = tau.Min();
 		}
 		else
 		{
 			Eigen::JacobiSVD<Eigen::MatrixXd> jacobi(A);
-			for(unsigned int i=0;i<dR_over_dc.Rows();i++)
+			for(unsigned int i=0;i<dR_over_dc.rows();i++)
 				tau[i+1] = 1./std::max(1e-12, fabs(jacobi.singularValues().real()[i]));
 			tau_min_jacobian[j] = tau.Min();
 		}
@@ -580,10 +578,9 @@ void Window_ROPA::AnalyzeCharacteristicTimes()
 	OpenSMOKE::OpenSMOKEVectorDouble x(data_->thermodynamicsMapXML->NumberOfSpecies());
 	OpenSMOKE::OpenSMOKEVectorDouble omega(data_->thermodynamicsMapXML->NumberOfSpecies());
 	OpenSMOKE::OpenSMOKEVectorDouble c(data_->thermodynamicsMapXML->NumberOfSpecies());
-	OpenSMOKE::OpenSMOKEMatrixDouble dR_over_dc(data_->thermodynamicsMapXML->NumberOfSpecies(),data_->thermodynamicsMapXML->NumberOfSpecies());
-	OpenSMOKE::OpenSMOKEVectorDouble tau(dR_over_dc.Rows());
-	Eigen::MatrixXd A(dR_over_dc.Rows(),dR_over_dc.Rows());
-
+	Eigen::MatrixXd dR_over_dc(data_->thermodynamicsMapXML->NumberOfSpecies(),data_->thermodynamicsMapXML->NumberOfSpecies());
+	OpenSMOKE::OpenSMOKEVectorDouble tau(dR_over_dc.rows());
+	
 	unsigned int index = 0;
 	for(unsigned int j=0;j<data_->number_of_abscissas_;j++)
 		if (data_->additional[0][j] >= ui.doubleSpinBox_CharacteristicTimes->value() )
@@ -598,7 +595,7 @@ void Window_ROPA::AnalyzeCharacteristicTimes()
 			
 	// Calculates mole fractions
 	double MWmix;
-	data_->thermodynamicsMapXML->MoleFractions_From_MassFractions(x, MWmix, omega);
+	data_->thermodynamicsMapXML->MoleFractions_From_MassFractions(x.GetHandle(), MWmix, omega.GetHandle());
 
 	// Calculates concentrations
 	const double P_Pa = data_->additional[data_->index_P][index];
@@ -613,14 +610,12 @@ void Window_ROPA::AnalyzeCharacteristicTimes()
 	data_->thermodynamicsMapXML->SetPressure(P_Pa);
 
 	data_->kineticsMapXML->KineticConstants();
-	data_->kineticsMapXML->ReactionRates(c);
+	data_->kineticsMapXML->ReactionRates(c.GetHandle());
 
-	data_->kineticsMapXML->DerivativesOfFormationRates(c, omega, &dR_over_dc);
+	data_->kineticsMapXML->DerivativesOfFormationRates(c.GetHandle(), omega.GetHandle(), &dR_over_dc);
 
 	// Calculates the eigenvectors
-	for(unsigned int i=0;i<dR_over_dc.Rows();i++)
-		for(unsigned int j=0;j<dR_over_dc.Rows();j++)
-			A(i,j) = dR_over_dc[i+1][j+1];
+	Eigen::MatrixXd A = dR_over_dc;
 
 	if (ui.radioButton_eigenvalues->isChecked() == true)
 	{
@@ -630,7 +625,7 @@ void Window_ROPA::AnalyzeCharacteristicTimes()
 			abort();
 		}
 		
-		for(unsigned int i=0;i<dR_over_dc.Rows();i++)
+		for(unsigned int i=0;i<dR_over_dc.rows();i++)
 			tau[i+1] = 1./std::max(1e-12, fabs(eigensolver.eigenvalues().real()[i]));
 
 	//	std::ofstream fOut("eigen", std::ios::out);
@@ -641,7 +636,7 @@ void Window_ROPA::AnalyzeCharacteristicTimes()
 	else
 	{
 		Eigen::JacobiSVD<Eigen::MatrixXd> jacobi(A);
-		for(unsigned int i=0;i<dR_over_dc.Rows();i++)
+		for(unsigned int i=0;i<dR_over_dc.rows();i++)
 			tau[i+1] = 1./std::max(1e-12, fabs(jacobi.singularValues().real()[i]));
 	}
 
@@ -649,7 +644,7 @@ void Window_ROPA::AnalyzeCharacteristicTimes()
 	Eigen::VectorXi bins(16);
 	bins.setConstant(0);
 
-	for(unsigned int i=1;i<=dR_over_dc.Rows();i++)
+	for(unsigned int i=1;i<=dR_over_dc.rows();i++)
 	{
 		if (tau[i] >=5e2)			bins(15)++;
 		else if (tau[i] >=5e1)		bins(14)++;
@@ -850,7 +845,8 @@ void Window_ROPA::AnalyzeCharacteristicTimes()
 	fJacobian.close();
 }
 */
-		// Calculates
+
+// Calculates
 void CalculateTau(	OpenSMOKE::OpenSMOKEVectorDouble& tau, 
 					const OpenSMOKE::OpenSMOKEMatrixDouble& dR_over_dc, bool flag,
 					const int nspecies, const OpenSMOKE::OpenSMOKEVectorInt& indices)
@@ -925,7 +921,7 @@ void Window_ROPA::Plot_ReactionRates()
 			
 			// Calculates mole fractions
 			double MWmix;
-			data_->thermodynamicsMapXML->MoleFractions_From_MassFractions(x, MWmix, omega);
+			data_->thermodynamicsMapXML->MoleFractions_From_MassFractions(x.GetHandle(), MWmix, omega.GetHandle());
 
 			// Calculates concentrations
 			const double P_Pa = data_->additional[data_->index_P][i];
@@ -940,8 +936,8 @@ void Window_ROPA::Plot_ReactionRates()
 			data_->thermodynamicsMapXML->SetPressure(P_Pa);
 
 			data_->kineticsMapXML->KineticConstants();
-			data_->kineticsMapXML->ReactionRates(c);
-			data_->kineticsMapXML->GetReactionRates(&r);
+			data_->kineticsMapXML->ReactionRates(c.GetHandle());
+			data_->kineticsMapXML->GiveMeReactionRates(r.GetHandle());
 
 			for (unsigned int j=0;j<selected_reaction_indices.size();j++)
 			{
@@ -1051,7 +1047,7 @@ void Window_ROPA::UpdateListOfReactions()
 			
 				// Calculates mole fractions
 				double MWmix;
-				data_->thermodynamicsMapXML->MoleFractions_From_MassFractions(x, MWmix, omega);
+				data_->thermodynamicsMapXML->MoleFractions_From_MassFractions(x.GetHandle(), MWmix, omega.GetHandle());
 
 				// Calculates concentrations
 				const double P_Pa = data_->additional[data_->index_P][i];
@@ -1066,8 +1062,8 @@ void Window_ROPA::UpdateListOfReactions()
 				data_->thermodynamicsMapXML->SetPressure(P_Pa);
 
 				data_->kineticsMapXML->KineticConstants();
-				data_->kineticsMapXML->ReactionRates(c);
-				data_->kineticsMapXML->GetReactionRates(&r);
+				data_->kineticsMapXML->ReactionRates(c.GetHandle());
+				data_->kineticsMapXML->GiveMeReactionRates(r.GetHandle());
 
 				for(unsigned int j=0;j<indices_coarse_reactions_.size();j++)
 					if (fabs(r[indices_coarse_reactions_[j]+1]) > tmp_max[j]) tmp_max[j] = fabs(r[indices_coarse_reactions_[j]+1]);
@@ -1154,7 +1150,7 @@ void Window_ROPA::Plot_FluxAnalysis()
 			
 		// Calculates mole fractions
 		double MWmix;
-		data_->thermodynamicsMapXML->MoleFractions_From_MassFractions(x, MWmix, omega);
+		data_->thermodynamicsMapXML->MoleFractions_From_MassFractions(x.GetHandle(), MWmix, omega.GetHandle());
 
 		// Calculates concentrations
 		const double P_Pa = data_->additional[data_->index_P][index];
@@ -1169,8 +1165,8 @@ void Window_ROPA::Plot_FluxAnalysis()
 		data_->thermodynamicsMapXML->SetPressure(P_Pa);
 
 		data_->kineticsMapXML->KineticConstants();
-		data_->kineticsMapXML->ReactionRates(c);
-		data_->kineticsMapXML->GetReactionRates(&r);
+		data_->kineticsMapXML->ReactionRates(c.GetHandle());
+		data_->kineticsMapXML->GiveMeReactionRates(r.GetHandle());
 
 		OpenSMOKE::FluxAnalysisMap flux_analysis(*data_->thermodynamicsMapXML, *data_->kineticsMapXML);
 		flux_analysis.SetDestructionAnalysis(ui.radioButton_FluxAnalysis_Destruction->isChecked());
