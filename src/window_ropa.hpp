@@ -1177,7 +1177,7 @@ void Window_ROPA::Plot_FluxAnalysis()
 		flux_analysis.SetMaxWidth(max_width);
 		flux_analysis.SetMinPercentageThreshold(min_threshold_percentage);
 		flux_analysis.SetAtom(index_element);
-		flux_analysis.SetReactionRates(r);
+		flux_analysis.SetReactionRates(r.Size(), r.GetHandle());
 		
 		std::vector<unsigned int> important_indices;
 		important_indices.push_back(index_of_species);
