@@ -11,7 +11,9 @@ src/QCustomPlot/qcustomplot-0.9/
 .*.sw[op]
 *~
 *.VC.db
+*.VC.db.*
 *.VC.opendb
+*.VC.opendb.*
 
 #Microsoft Visual studio
 ########################
@@ -37,6 +39,7 @@ lnInclude/
 *.exe
 *.o
 *.so
+GeneratedFiles/
 
 # Packages #
 ############
