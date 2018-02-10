@@ -2,11 +2,11 @@
 # Please, modify the paths reported below
 ######################################################################
 
-INCLUDE_BOOST = /software/chimica2/libraries/boost/boost-1.64.0-gcc-6.3.0/include
+INCLUDE_BOOST = /software/chimica2/libraries/boost/boost-1.65.1-gcc-6.3.0/include
 INCLUDE_RAPIDXML = /software/chimica2/libraries/rapidxml/rapidxml-1.13
-INCLUDE_EIGEN = /software/chimica2/libraries/eigen/eigen-3.3.3
+INCLUDE_EIGEN = /software/chimica2/libraries/eigen/eigen-3.3.4
 INCLUDE_OPENSMOKEPP = ../../../OpenSMOKEpp/source
-LIB_BOOST = /software/chimica2/libraries/boost/boost-1.64.0-gcc-6.3.0/lib
+LIB_BOOST = /software/chimica2/libraries/boost/boost-1.65.1-gcc-6.3.0/lib
 
 ######################################################################
 
