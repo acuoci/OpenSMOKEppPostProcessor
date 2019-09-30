@@ -35,6 +35,7 @@
 \*-----------------------------------------------------------------------*/
 
 #include "widget_horizontal_bars.h"
+#include <QMenuBar>
 #include <QPainter>
 #include <QClipboard>
 #include <QPrintDialog>
