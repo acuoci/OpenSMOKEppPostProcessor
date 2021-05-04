@@ -65,6 +65,7 @@
 #include <QtCore/QStack>
 #include <QtCore/QCache>
 #include <QtCore/QMargins>
+#include <QSet>
 #include <qmath.h>
 #include <limits>
 #include <algorithm>

@@ -2,11 +2,10 @@
 # Please, modify the paths reported below
 ######################################################################
 
-INCLUDE_BOOST = /software/chimica2/libraries/boost/boost-1.69.0-gcc-4.8.5/include
-INCLUDE_RAPIDXML = /software/chimica2/libraries/rapidxml/rapidxml-1.13
-INCLUDE_EIGEN = /software/chimica2/libraries/eigen/eigen-3.3.4
+INCLUDE_BOOST = /software/chimica2/libraries/boost/boost-1.72.0-gcc-9.2.0/include
+INCLUDE_EIGEN = /software/chimica2/libraries/eigen/eigen-3.4.r1
 INCLUDE_OPENSMOKEPP = ../../../OpenSMOKEpp/source
-LIB_BOOST = /software/chimica2/libraries/boost/boost-1.69.0-gcc-4.8.5/lib
+LIB_BOOST = /software/chimica2/libraries/boost/boost-1.72.0-gcc-9.2.0/lib
 
 ######################################################################
 
@@ -17,13 +16,13 @@ LIB_BOOST = /software/chimica2/libraries/boost/boost-1.69.0-gcc-4.8.5/lib
 # DO NOT CHANGE THE LINES BELOW
 ################################################################################
 
-QMAKE_CXXFLAGS += -DQTVERSION=5 -std=c++1
+QMAKE_CXXFLAGS += -DQTVERSION=5 -std=c++11
 QT += widgets uitools printsupport
 CONFIG += qt release core gui printsupport
 TEMPLATE = app
 TARGET =  OpenSMOKEpp_PostProcessor_QT5.sh
-DEPENDPATH +=  ../../src  ../../src/forms ../../src/QCustomPlot/qcustomplot-2.0.0 
-INCLUDEPATH += ../../src  ../../src/forms ../../src/QCustomPlot/qcustomplot-2.0.0
+DEPENDPATH +=  ../../src  ../../src/forms ../../src/QCustomPlot/qcustomplot-2.0.1 
+INCLUDEPATH += ../../src  ../../src/forms ../../src/QCustomPlot/qcustomplot-2.0.1
 
 QMAKE_LFLAGS += 
 
@@ -48,7 +47,7 @@ HEADERS += ../../src/Profiles_Database.h \
            ../../src/window_sensitivities.h \
            ../../src/window_zoom_2dplot.h \
            ../../src/xyplot.h \
-           ../../src/QCustomPlot/qcustomplot-2.0.0/qcustomplot.h
+           ../../src/QCustomPlot/qcustomplot-2.0.1/qcustomplot.h
 
 #Forms (.ui)
 FORMS += ../../src/forms/qtopensmoke_postprocessor.ui \
@@ -67,7 +66,7 @@ SOURCES += ../../src/main.cpp \
            ../../src/window_sensitivities.cpp \
            ../../src/window_zoom_2dplot.cpp \
            ../../src/xyplot.cpp \
-           ../../src/QCustomPlot/qcustomplot-2.0.0/qcustomplot.cpp
+           ../../src/QCustomPlot/qcustomplot-2.0.1/qcustomplot.cpp
 
 LIBS    += -L$${LIB_BOOST} -lboost_date_time -lboost_filesystem -lboost_program_options -lboost_system -lboost_regex
 
