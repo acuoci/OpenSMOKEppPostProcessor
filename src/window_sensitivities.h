@@ -37,7 +37,7 @@
 #ifndef WINDOW_SENSITIVITIES_H
 #define WINDOW_SENSITIVITIES_H
 
-#include <QWidget>
+#include <QtWidgets/QWidget>
 #include "ui_window_sensitivities.h"
 
 class Profiles_Database;

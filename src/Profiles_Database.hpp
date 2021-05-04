@@ -1,4 +1,4 @@
-/*----------------------------------------------------------------------*\
+/*-----------------------------------------------------------------------*\
 |    ___                   ____  __  __  ___  _  _______                  |
 |   / _ \ _ __   ___ _ __ / ___||  \/  |/ _ \| |/ / ____| _     _         |
 |  | | | | '_ \ / _ \ '_ \\___ \| |\/| | | | | ' /|  _| _| |_ _| |_       |
@@ -16,7 +16,7 @@
 |                                                                         |
 |   This file is part of OpenSMOKE++PostProcessor.                        |
 |                                                                         |
-|	License                                                           |
+|   License                                                               |
 |                                                                         |
 |   Copyright(C) 2014, 2013  Alberto Cuoci                                |
 |   OpenSMOKE++PostProcessor is free software: you can redistribute it    |
@@ -66,12 +66,11 @@ bool Profiles_Database::ReadKineticMechanism(const QString& folder_name)
 
 	// Read from file 
 	{
-		rapidxml::xml_document<> doc;
-		std::vector<char> xml_string; 
-        OpenSMOKE::OpenInputFileXML(doc, xml_string, path_mechanism);
+		boost::property_tree::ptree ptree;
+		boost::property_tree::read_xml((path_mechanism).string(), ptree);
 
-		thermodynamicsMapXML = new OpenSMOKE::ThermodynamicsMap_CHEMKIN(doc); 
-		kineticsMapXML = new OpenSMOKE::KineticsMap_CHEMKIN(*thermodynamicsMapXML, doc); 
+		thermodynamicsMapXML = new OpenSMOKE::ThermodynamicsMap_CHEMKIN(ptree);
+		kineticsMapXML = new OpenSMOKE::KineticsMap_CHEMKIN(*thermodynamicsMapXML, ptree);
 	}
 
 	if (thermodynamicsMapXML->NumberOfSpecies() == omega.size())
@@ -99,21 +98,29 @@ bool Profiles_Database::ReadKineticMechanism(const QString& folder_name)
 			return false;
 		}
 
-		rapidxml::xml_document<> local_xml;
-		std::vector<char> local_xml_input_string;
-        OpenSMOKE::OpenInputFileXML(local_xml, local_xml_input_string, path_reaction_names);
-
-		// Names of reactions
 		{
-			rapidxml::xml_node<>* reaction_names_node = local_xml.first_node("opensmoke")->first_node("reaction-names");
-			std::stringstream values(reaction_names_node->value());
+			boost::property_tree::ptree ptree;
+			boost::property_tree::read_xml((path_reaction_names).string(), ptree);
 
-			reaction_strings_.reserve(kineticsMapXML->NumberOfReactions());
-			for(unsigned int j=0;j<kineticsMapXML->NumberOfReactions();j++)
+			//rapidxml::xml_document<> local_xml;
+			//std::vector<char> local_xml_input_string;
+			//OpenSMOKE::OpenInputFileXML(local_xml, local_xml_input_string, path_reaction_names);
+
+			// Names of reactions
 			{
-				std::string reaction_string; 
-				values >> reaction_string;
-				reaction_strings_.push_back(reaction_string);
+				//rapidxml::xml_node<>* reaction_names_node = local_xml.first_node("opensmoke")->first_node("reaction-names");
+				//std::stringstream values(reaction_names_node->value());
+
+				std::stringstream stream;
+				stream.str(ptree.get< std::string >("opensmoke.reaction-names"));
+
+				reaction_strings_.reserve(kineticsMapXML->NumberOfReactions());
+				for (unsigned int j = 0; j < kineticsMapXML->NumberOfReactions(); j++)
+				{
+					std::string reaction_string;
+					stream >> reaction_string;
+					reaction_strings_.push_back(reaction_string);
+				}
 			}
 		}
 	}
@@ -136,7 +143,8 @@ bool Profiles_Database::ReadFileResults(const QString& folder_name)
 		return false;
 	}
 
-    OpenSMOKE::OpenInputFileXML(xml_main_input, xml_main_input_string, path_results);
+	boost::property_tree::read_xml((path_results).string(), xml_main_input);
+
 	Prepare();
 
 	boost::filesystem::path path_sensitivities = path_folder_results_ / "Sensitivities.xml"; 
@@ -150,13 +158,15 @@ void Profiles_Database::Prepare()
 {
 	// Indices of T, P and MW
 	{
-		rapidxml::xml_node<>* indices_node = xml_main_input.first_node("opensmoke")->first_node("t-p-mw");
-		if (indices_node != 0)
+		boost::optional< boost::property_tree::ptree& > child = xml_main_input.get_child_optional("opensmoke.t-p-mw");
+
+		if (child)
 		{
-			std::stringstream values(indices_node->value());
-			values >> index_T;
-			values >> index_P;
-			values >> index_MW;
+			std::stringstream stream;
+			stream.str(xml_main_input.get< std::string >("opensmoke.t-p-mw"));
+			stream >> index_T;
+			stream >> index_P;
+			stream >> index_MW;
 		}
 		else
 		{
@@ -168,28 +178,30 @@ void Profiles_Database::Prepare()
 
 	// Additional
 	{
-		rapidxml::xml_node<>* additional_node = xml_main_input.first_node("opensmoke")->first_node("additional");
-		if (additional_node != 0)
+		boost::optional< boost::property_tree::ptree& > child = xml_main_input.get_child_optional("opensmoke.additional");
+
+		if (child)
 		{
-			std::stringstream values(additional_node->value());
+			std::stringstream stream;
+			stream.str(xml_main_input.get< std::string >("opensmoke.additional"));
 			
 			unsigned int number_of_additional_profiles;
-			values >> number_of_additional_profiles;
+			stream >> number_of_additional_profiles;
 
 			string_list_additional.reserve(number_of_additional_profiles);
 			for(unsigned int j=0;j<number_of_additional_profiles;j++)
 			{
 				std::string unit;
 				std::string dummy;
-				values >> dummy;
-				values >> unit;
+				stream >> dummy;
+				stream >> unit;
 				string_list_additional.push_back(QString::fromStdString(dummy +" " + unit));
 
 				if (dummy == "density")			index_density  = j+1;
 				if (dummy == "velocity")		index_velocity = j+1;
 				if (dummy == "mass-flow-rate")	index_mass_flow_rate = j+1;
 
-				values >> dummy;
+				stream >> dummy;
 			}
 		}
 		else
@@ -205,13 +217,15 @@ void Profiles_Database::Prepare()
 	// Species (mass fractions)
 	QStringList  string_list_massfractions_unsorted;
 	{
-		rapidxml::xml_node<>* massfractions_node = xml_main_input.first_node("opensmoke")->first_node("mass-fractions");
-		if (massfractions_node != 0)
+		boost::optional< boost::property_tree::ptree& > child = xml_main_input.get_child_optional("opensmoke.mass-fractions");
+
+		if (child)
 		{
-			std::stringstream values(massfractions_node->value());
+			std::stringstream stream;
+			stream.str(xml_main_input.get< std::string >("opensmoke.mass-fractions"));
 			
 			unsigned int number_of_massfractions_profiles;
-			values >> number_of_massfractions_profiles;
+			stream >> number_of_massfractions_profiles;
 			
 			column_index_of_massfractions_profiles.resize(number_of_massfractions_profiles);
 			string_list_massfractions_unsorted.reserve(number_of_massfractions_profiles);
@@ -220,11 +234,11 @@ void Profiles_Database::Prepare()
 			for(unsigned int j=0;j<number_of_massfractions_profiles;j++)
 			{
 				std::string dummy;
-				values >> dummy;
+				stream >> dummy;
 				string_list_massfractions_unsorted.push_back(QString::fromStdString(dummy));
 				
-				values >> mw_species_[j];
-				values >> column_index_of_massfractions_profiles[j];
+				stream >> mw_species_[j];
+				stream >> column_index_of_massfractions_profiles[j];
 			}
 
 			string_list_massfractions_sorted = string_list_massfractions_unsorted;
@@ -252,13 +266,14 @@ void Profiles_Database::Prepare()
 	additional.resize(string_list_additional.size());
 	{
 		{
-			rapidxml::xml_node<>* profiles_size_node = xml_main_input.first_node("opensmoke")->first_node("profiles-size");
+			boost::optional< boost::property_tree::ptree& > child = xml_main_input.get_child_optional("opensmoke.profiles-size");
 			
-			if (profiles_size_node != 0)
+			if (child)
 			{
-				std::stringstream values(profiles_size_node->value());
-				values >> number_of_abscissas_; 
-				values >> number_of_ordinates_;
+				std::stringstream stream;
+				stream.str(xml_main_input.get< std::string >("opensmoke.profiles-size"));
+				stream >> number_of_abscissas_; 
+				stream >> number_of_ordinates_;
 			}
 			else
 			{
@@ -276,16 +291,18 @@ void Profiles_Database::Prepare()
 		for(unsigned int j=0;j<string_list_additional.size();j++)
 			additional[j].resize(number_of_abscissas_);
 		
-		rapidxml::xml_node<>* profiles_node = xml_main_input.first_node("opensmoke")->first_node("profiles");
-		if (profiles_node != 0)
+		boost::optional< boost::property_tree::ptree& > child = xml_main_input.get_child_optional("opensmoke.profiles");
+		if (child)
 		{
-			std::stringstream values(profiles_node->value());
+			std::stringstream stream;
+			stream.str(xml_main_input.get< std::string >("opensmoke.profiles"));
+
 			for(unsigned int i=0;i<number_of_abscissas_;i++)
 			{
 				for(unsigned int j=0;j<string_list_additional.size();j++)
-					values >> additional[j][i];
+					stream >> additional[j][i];
 				for(unsigned int j=0;j<column_index_of_massfractions_profiles.size();j++)
-					values >> omega[j][i];
+					stream >> omega[j][i];
 			}
 		}
 		else

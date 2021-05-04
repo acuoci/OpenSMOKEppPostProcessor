@@ -37,7 +37,7 @@
 #ifndef QTOPENSMOKE_Profiles_Database_H
 #define QTOPENSMOKE_Profiles_Database_H
 
-#include <QObject>
+#include <QtCore/QObject>
 
 #if QTVERSION == 4
 #include <QtGui/QMainWindow>
@@ -45,8 +45,8 @@
 #include <QtWidgets/QMainWindow>
 #endif
 
-#include "rapidxml.hpp"
 #include <boost/filesystem.hpp>
+#include <boost/property_tree/ptree.hpp>
 
 namespace OpenSMOKE
 {
@@ -89,8 +89,7 @@ public:
 
 	QVector<double> mw_species_;
 
-	rapidxml::xml_document<> xml_main_input;
-	std::vector<char> xml_main_input_string;
+	boost::property_tree::ptree xml_main_input;
 
 	OpenSMOKE::ThermodynamicsMap_CHEMKIN* thermodynamicsMapXML; 
 	OpenSMOKE::KineticsMap_CHEMKIN* kineticsMapXML; 

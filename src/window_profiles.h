@@ -37,7 +37,7 @@
 #ifndef QTOPENSMOKE_Window_Profiles_H
 #define QTOPENSMOKE_Window_Profiles_H
 
-#include <QWidget>
+#include <QtWidgets/QWidget>
 #include "ui_window_profiles.h"
 
 class Profiles_Database;

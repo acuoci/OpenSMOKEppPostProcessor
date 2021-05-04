@@ -37,7 +37,7 @@
 #ifndef QTOPENSMOKE_XYPlot_H
 #define QTOPENSMOKE_XYPlot_H
 
-#include <QObject>
+#include <QtCore/QObject>
 #include "qcustomplot.h"
 
 class XYPlot : public QObject

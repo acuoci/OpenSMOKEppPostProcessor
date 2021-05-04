@@ -38,7 +38,7 @@
 #define QTOPENSMOKE_Window_ROPA_H
 
 #include <boost/filesystem.hpp>
-#include <QWidget>
+#include <QtWidgets/QWidget>
 #include "ui_window_ropa.h"
 
 
