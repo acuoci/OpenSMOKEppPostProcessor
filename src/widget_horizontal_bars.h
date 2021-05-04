@@ -37,10 +37,10 @@
 #ifndef QBARSWIDGET_H
 #define QBARSWIDGET_H
 
-#include <QMap>
-#include <QPixmap>
-#include <QVector>
-#include <QWidget>
+#include <QtCore/QMap>
+#include <QtGui/QPixmap>
+#include <QtCore/QVector>
+#include <QtWidgets/QWidget>
 #include <vector>
 
 #include "ui_widget_horizontal_bars.h"

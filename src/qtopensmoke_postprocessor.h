@@ -46,7 +46,6 @@
 #endif
 
 #include "ui_qtopensmoke_postprocessor.h"
-#include "rapidxml.hpp"
 
 class Profiles_Database;
 

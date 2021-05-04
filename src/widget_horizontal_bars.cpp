@@ -1,4 +1,4 @@
-/*----------------------------------------------------------------------*\
+/*-----------------------------------------------------------------------*\
 |    ___                   ____  __  __  ___  _  _______                  |
 |   / _ \ _ __   ___ _ __ / ___||  \/  |/ _ \| |/ / ____| _     _         |
 |  | | | | '_ \ / _ \ '_ \\___ \| |\/| | | | | ' /|  _| _| |_ _| |_       |
@@ -16,7 +16,7 @@
 |                                                                         |
 |   This file is part of OpenSMOKE++PostProcessor.                        |
 |                                                                         |
-|	License                                                               |
+|   License                                                               |
 |                                                                         |
 |   Copyright(C) 2014, 2013  Alberto Cuoci                                |
 |   OpenSMOKE++PostProcessor is free software: you can redistribute it    |
@@ -35,13 +35,13 @@
 \*-----------------------------------------------------------------------*/
 
 #include "widget_horizontal_bars.h"
-#include <QMenuBar>
-#include <QPainter>
-#include <QClipboard>
-#include <QPrintDialog>
-#include <QTextStream>
-#include <QImage>
-#include <QTextDocument>
+#include <QtWidgets/QMenuBar>
+#include <QtGui/QPainter>
+#include <QtGui/QClipboard>
+#include <QtPrintSupport/QPrintDialog>
+#include <QtCore/QTextStream>
+#include <QtGui/QImage>
+#include <QtGui/QTextDocument>
 #include <math.h>
 #include <iostream>
 

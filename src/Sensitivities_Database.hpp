@@ -60,42 +60,46 @@ void Sensitivities_Database::SetDatabase(Profiles_Database* data)
 void Sensitivities_Database::ReadParentFile()
 {
 	boost::filesystem::path path_results = data_->path_folder_results_ / "Sensitivities.xml";   
-    OpenSMOKE::OpenInputFileXML(xml_main_input, xml_main_input_string, path_results);
-	
+	boost::property_tree::read_xml((path_results).string(), xml_main_input);
+
 	{
-		rapidxml::xml_node<>* variables_node = xml_main_input.first_node("opensmoke")->first_node("variables");
-		std::stringstream values(variables_node->value());
-		values >> number_of_variables_;
+		std::stringstream stream;
+		stream.str(xml_main_input.get< std::string >("opensmoke.variables"));
+
+		stream >> number_of_variables_;
 
 		names_.resize(number_of_variables_);
 		local_index_.resize(number_of_variables_);
 		global_index_.resize(number_of_variables_);
 		for(unsigned int j=0;j<number_of_variables_;j++)
 		{	
-			values >> names_[j];
-			values >> local_index_[j];
-			values >> global_index_[j];
+			stream >> names_[j];
+			stream >> local_index_[j];
+			stream >> global_index_[j];
 		}
 	}
 	
 	{
-		rapidxml::xml_node<>* parameters_node = xml_main_input.first_node("opensmoke")->first_node("n-parameters");
-		std::stringstream values(parameters_node->value());
-		values >> number_of_parameters_;
+		std::stringstream stream;
+		stream.str(xml_main_input.get< std::string >("opensmoke.n-parameters"));
+
+		stream >> number_of_parameters_;
 		parameters_.resize(number_of_parameters_);
 	}
 
 	{
-		rapidxml::xml_node<>* parameters_node = xml_main_input.first_node("opensmoke")->first_node("constant-parameters");
-		std::stringstream values(parameters_node->value());
+		std::stringstream stream;
+		stream.str(xml_main_input.get< std::string >("opensmoke.constant-parameters"));
+
 		for(unsigned int j=0;j<number_of_parameters_;j++)
-			values >> parameters_[j];
+			stream >> parameters_[j];
 	}
 
 	{
-		rapidxml::xml_node<>* points_node = xml_main_input.first_node("opensmoke")->first_node("points");
-		std::stringstream values(points_node->value());
-		values >> number_of_points_;
+		std::stringstream stream;
+		stream.str(xml_main_input.get< std::string >("opensmoke.points"));
+
+		stream >> number_of_points_;
 	}
 
 	// Memory allocation
@@ -145,20 +149,23 @@ void Sensitivities_Database::ReadFromChildFile(const std::string name)
 	std::string local_name = "Sensitivities." + name + ".xml";
 	boost::filesystem::path path_file = data_->path_folder_results_ / local_name;   
 
-	rapidxml::xml_document<> local_xml;
-	std::vector<char> local_xml_input_string;
-    OpenSMOKE::OpenInputFileXML(local_xml, local_xml_input_string, path_file);
+	boost::property_tree::ptree ptree;
+	boost::property_tree::read_xml((path_file).string(), ptree);
 
+	boost::optional< boost::property_tree::ptree& > child = ptree.get_child_optional("opensmoke.coefficients");
 
-	rapidxml::xml_node<>* coefficients_node = local_xml.first_node("opensmoke")->first_node("coefficients");
-	if (coefficients_node == 0) 
+	if (!child)
+	{
 		MessageBox("Corrupted xml file: missing the coefficients leaf");
+	}
 	else
 	{
-		std::stringstream values(coefficients_node->value());
+		std::stringstream stream;
+		stream.str(ptree.get< std::string >("opensmoke.coefficients"));
+
 		for(unsigned int i=0;i<number_of_points_;i++)
 			for(unsigned int j=0;j<number_of_parameters_;j++)
-				values >> coefficients_[j][i];
+				stream >> coefficients_[j][i];
 	}
 
 	for(unsigned int j=0;j<number_of_variables_;j++)

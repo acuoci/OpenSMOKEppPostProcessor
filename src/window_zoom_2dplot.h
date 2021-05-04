@@ -37,7 +37,7 @@
 #ifndef WINDOW_ZOOM_2DPLOT_H
 #define WINDOW_ZOOM_2DPLOT_H
 
-#include <QDialog>
+#include <QtWidgets/QDialog>
 #include "ui_window_zoom_2dplot.h"
 
 class Window_Zoom_2dPlot : public QDialog

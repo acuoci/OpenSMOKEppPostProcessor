@@ -121,9 +121,6 @@
     <ClCompile Include="GeneratedFiles\Release\moc_qcustomplot.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release-XP\moc_qcustomplot.cpp">
-      <Filter>Generated Files\Release-XP</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="opensmokepppostprocessor.qrc">

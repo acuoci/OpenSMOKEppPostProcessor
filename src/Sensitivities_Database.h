@@ -37,7 +37,7 @@
 #ifndef QTOPENSMOKE_Sensitivities_Database_H
 #define QTOPENSMOKE_Sensitivities_Database_H
 
-#include <QObject>
+#include <QtCore/QObject>
 
 #if QTVERSION == 4
 #include <QtGui/QMainWindow>
@@ -45,7 +45,7 @@
 #include <QtWidgets/QMainWindow>
 #endif
 
-#include "rapidxml.hpp"
+#include <boost/property_tree/ptree.hpp>
 
 class Profiles_Database;
 
@@ -62,9 +62,7 @@ public:
 	QVector<double> NormalizedProfile(const unsigned int index, bool local_normalization);
 	double NormalizedProfile(const unsigned int index, bool local_normalization, unsigned int point);
 
-
-	rapidxml::xml_document<> xml_main_input;
-	std::vector<char> xml_main_input_string;
+	boost::property_tree::ptree xml_main_input;
 
 	const std::vector<std::string>& names() const { return names_; }
 	unsigned int number_of_variables() const { return number_of_variables_; }
