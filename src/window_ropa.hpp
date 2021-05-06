@@ -1,4 +1,4 @@
-/*----------------------------------------------------------------------*\
+/*-----------------------------------------------------------------------*\
 |    ___                   ____  __  __  ___  _  _______                  |
 |   / _ \ _ __   ___ _ __ / ___||  \/  |/ _ \| |/ / ____| _     _         |
 |  | | | | '_ \ / _ \ '_ \\___ \| |\/| | | | | ' /|  _| _| |_ _| |_       |
@@ -16,7 +16,7 @@
 |                                                                         |
 |   This file is part of OpenSMOKE++PostProcessor.                        |
 |                                                                         |
-|	License                                                           |
+|   License                                                               |
 |                                                                         |
 |   Copyright(C) 2014, 2013  Alberto Cuoci                                |
 |   OpenSMOKE++PostProcessor is free software: you can redistribute it    |
@@ -1211,7 +1211,7 @@ void Window_ROPA::Plot_FluxAnalysis()
 			std::string graph_txt_quoted = "\"" + graph_txt.string() + "\"";
     
 			std::string graphviz_command = "dot  -Tpng " + graph_txt_quoted + " -o " + graph_png_quoted;
-			std::string irfanview_command = "START /MIN i_view32.exe " + graph_png_quoted;
+			std::string irfanview_command = "START /MIN i_view64.exe " + graph_png_quoted;
 
             system(graphviz_command.c_str());
     		system(irfanview_command.c_str());

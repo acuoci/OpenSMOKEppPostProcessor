@@ -83,7 +83,7 @@
   <ItemGroup>
     <ClCompile Include="..\..\..\..\src\CollectionOfClasses.cpp" />
     <ClCompile Include="..\..\..\..\src\main.cpp" />
-    <ClCompile Include="..\..\..\..\src\QCustomPlot\qcustomplot-2.0.0\qcustomplot.cpp" />
+    <ClCompile Include="..\..\..\..\src\QCustomPlot\qcustomplot-2.0.1\qcustomplot.cpp" />
     <ClCompile Include="..\..\..\..\src\qtopensmoke_postprocessor.cpp" />
     <ClCompile Include="..\..\..\..\src\widget_horizontal_bars.cpp" />
     <ClCompile Include="..\..\..\..\src\window_sensitivities.cpp" />
@@ -147,7 +147,7 @@
   <ItemGroup>
     <ClInclude Include="..\..\..\..\src\Profiles_Database.h" />
     <ClInclude Include="..\..\..\..\src\Profiles_Database.hpp" />
-    <CustomBuild Include="..\..\..\..\src\QCustomPlot\qcustomplot-2.0.0\qcustomplot.h">
+    <CustomBuild Include="..\..\..\..\src\QCustomPlot\qcustomplot-2.0.1\qcustomplot.h">
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing qcustomplot.h...</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
