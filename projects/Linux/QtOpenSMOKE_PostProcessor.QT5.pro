@@ -21,8 +21,8 @@ QT += widgets uitools printsupport
 CONFIG += qt release core gui printsupport
 TEMPLATE = app
 TARGET =  OpenSMOKEpp_PostProcessor_QT5.sh
-DEPENDPATH +=  ../../src  ../../src/forms ../../src/QCustomPlot/qcustomplot-2.0.1 
-INCLUDEPATH += ../../src  ../../src/forms ../../src/QCustomPlot/qcustomplot-2.0.1
+DEPENDPATH +=  ../../src  ../../src/forms ../../src/QCustomPlot/qcustomplot-2.1.0 
+INCLUDEPATH += ../../src  ../../src/forms ../../src/QCustomPlot/qcustomplot-2.1.0
 
 QMAKE_LFLAGS += 
 
@@ -47,7 +47,7 @@ HEADERS += ../../src/Profiles_Database.h \
            ../../src/window_sensitivities.h \
            ../../src/window_zoom_2dplot.h \
            ../../src/xyplot.h \
-           ../../src/QCustomPlot/qcustomplot-2.0.1/qcustomplot.h
+           ../../src/QCustomPlot/qcustomplot-2.1.0/qcustomplot.h
 
 #Forms (.ui)
 FORMS += ../../src/forms/qtopensmoke_postprocessor.ui \
@@ -66,7 +66,7 @@ SOURCES += ../../src/main.cpp \
            ../../src/window_sensitivities.cpp \
            ../../src/window_zoom_2dplot.cpp \
            ../../src/xyplot.cpp \
-           ../../src/QCustomPlot/qcustomplot-2.0.1/qcustomplot.cpp
+           ../../src/QCustomPlot/qcustomplot-2.1.0/qcustomplot.cpp
 
 LIBS    += -L$${LIB_BOOST} -lboost_date_time -lboost_filesystem -lboost_program_options -lboost_system -lboost_regex
 
