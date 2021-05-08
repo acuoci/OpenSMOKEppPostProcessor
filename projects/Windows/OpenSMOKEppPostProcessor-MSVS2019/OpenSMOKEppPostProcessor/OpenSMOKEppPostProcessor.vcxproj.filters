@@ -112,7 +112,7 @@
     <ClCompile Include="..\..\..\..\src\xyplot.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\QCustomPlot\qcustomplot-2.0.1\qcustomplot.cpp">
+    <ClCompile Include="..\..\..\..\src\QCustomPlot\qcustomplot-2.1.0\qcustomplot.cpp">
       <Filter>Source Files\qcustomplot</Filter>
     </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_qcustomplot.cpp">
@@ -168,7 +168,7 @@
     <CustomBuild Include="..\..\..\..\src\forms\window_zoom_2dplot.ui">
       <Filter>Form Files</Filter>
     </CustomBuild>
-    <CustomBuild Include="..\..\..\..\src\QCustomPlot\qcustomplot-2.0.1\qcustomplot.h">
+    <CustomBuild Include="..\..\..\..\src\QCustomPlot\qcustomplot-2.1.0\qcustomplot.h">
       <Filter>Header Files\qcustomplot</Filter>
     </CustomBuild>
   </ItemGroup>
