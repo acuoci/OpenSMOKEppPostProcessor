@@ -204,24 +204,28 @@ void Sensitivities_Database::ReadFromChildFile(const std::string name)
 // zero-based
 QVector<double> Sensitivities_Database::NormalizedProfile(const unsigned int index, bool local_normalization)
 {
+	
+
 	QVector<double> profile = coefficients_[index];
 	if (local_normalization == true)
 	{
+		const double local_threshold = 1.e-16;
+
 		for(unsigned int i=0;i<number_of_points_;i++)
-			if (fabs(variable_[i]) > 1e-12)
+			if (fabs(variable_[i]) > local_threshold)
 				profile[i] *= parameters_[index]/variable_[i];
 			else
 				profile[i] = 0.;
 	}
 	else
 	{
-		double normalization_coefficient = -1e100;
+		double normalization_coefficient = -1.e100;
 		for(unsigned int i=0;i<number_of_points_;i++)
 			if (fabs(variable_[i]) > normalization_coefficient) 
 				normalization_coefficient = fabs(variable_[i]);
 
-		
-		if (normalization_coefficient > 1e-32)
+		const double normalization_coefficient_threshold = 1.e-100;
+		if (normalization_coefficient > normalization_coefficient_threshold)
 			for(unsigned int i=0;i<number_of_points_;i++)
 				profile[i] *= parameters_[index]/normalization_coefficient;
 		else
@@ -237,7 +241,9 @@ double Sensitivities_Database::NormalizedProfile(const unsigned int index, bool 
 {
 	if (local_normalization == true)
 	{
-		if (fabs(variable_[point]) > 1e-16)
+		const double local_threshold = 1.e-16;
+
+		if (fabs(variable_[point]) > local_threshold)
 			return coefficients_[index][point]*parameters_[index]/variable_[point];
 		else
 			return 0.;
@@ -249,7 +255,8 @@ double Sensitivities_Database::NormalizedProfile(const unsigned int index, bool 
 			if (fabs(variable_[i]) > normalization_coefficient) 
 				normalization_coefficient = fabs(variable_[i]);
 		
-		if (normalization_coefficient > 1e-32)
+		const double normalization_coefficient_threshold = 1.e-100;
+		if (normalization_coefficient > normalization_coefficient_threshold)
 			return coefficients_[index][point]*parameters_[index]/normalization_coefficient;
 		else
 			return 0.;
