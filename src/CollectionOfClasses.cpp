@@ -35,7 +35,13 @@
 \*-----------------------------------------------------------------------*/
 
 // QT items
-#include <QtWidgets/QMessageBox>
+#include <QtGlobal>
+#if QT_VERSION >= QT_VERSION_CHECK(5, 0, 0)
+#  include <QtWidgets/QMessageBox>
+#else
+#  include <QtGui>
+#endif
+
 #include "xyplot.h"
 #include "qcustomplot.h"
 #include "widget_horizontal_bars.h"

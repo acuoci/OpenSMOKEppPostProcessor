@@ -38,7 +38,12 @@
 #define QTOPENSMOKE_Window_ROPA_H
 
 #include <boost/filesystem.hpp>
-#include <QtWidgets/QWidget>
+#include <QtGlobal>
+#if QT_VERSION >= QT_VERSION_CHECK(5, 0, 0)
+#  include <QtWidgets/QWidget>
+#else
+#  include <QtGui>
+#endif
 #include "ui_window_ropa.h"
 
 

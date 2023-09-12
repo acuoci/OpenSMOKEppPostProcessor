@@ -35,13 +35,14 @@
 \*-----------------------------------------------------------------------*/
 
 #include "xyplot.h"
+#include <QtGlobal>
+#if QT_VERSION >= QT_VERSION_CHECK(5, 0, 0)
 #include <QtWidgets/QMessageBox>
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QFileDialog>
-
-#if QTVERSION == 4
+#else
+#include <QtGui>
 #include <QDesktopWidget>
-#elif QTVERSION == 5
 #endif
 
 #include <iostream>

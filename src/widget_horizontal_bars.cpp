@@ -35,10 +35,14 @@
 \*-----------------------------------------------------------------------*/
 
 #include "widget_horizontal_bars.h"
-#include <QtWidgets/QMenuBar>
+#if QT_VERSION >= QT_VERSION_CHECK(5, 0, 0)
+#include <QtWidgets/QWidget>
+#include <QtPrintSupport/QPrintDialog>
+#else
+#include <QtGui>
+#endif
 #include <QtGui/QPainter>
 #include <QtGui/QClipboard>
-#include <QtPrintSupport/QPrintDialog>
 #include <QtCore/QTextStream>
 #include <QtGui/QImage>
 #include <QtGui/QTextDocument>

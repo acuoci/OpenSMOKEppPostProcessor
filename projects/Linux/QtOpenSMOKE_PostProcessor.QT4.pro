@@ -2,10 +2,10 @@
 # Please, modify the paths reported below
 ######################################################################
 
-INCLUDE_BOOST = /software/chimica2/libraries/boost/boost-1.72.0-gcc-9.2.0/include
-INCLUDE_EIGEN = /software/chimica2/libraries/eigen/eigen-3.4.r1
+INCLUDE_BOOST = /software/chimica2/libraries/boost/boost-1.69.0-gcc-4.8.5/include
+LIB_BOOST = /software/chimica2/libraries/boost/boost-1.69.0-gcc-4.8.5/lib
+INCLUDE_EIGEN = /software/chimica2/libraries/eigen/eigen-3.4.0
 INCLUDE_OPENSMOKEPP = ../../../OpenSMOKEpp/source
-LIB_BOOST = /software/chimica2/libraries/boost/boost-1.72.0-gcc-9.2.0/lib
 
 ######################################################################
 
@@ -16,13 +16,14 @@ LIB_BOOST = /software/chimica2/libraries/boost/boost-1.72.0-gcc-9.2.0/lib
 # DO NOT CHANGE THE LINES BELOW
 ################################################################################
 
-QMAKE_CXXFLAGS += -DQTVERSION=4 -std=c++11 
+QMAKE_CXXFLAGS += -DQTVERSION=4 -std=c++11
+
 QT += widgets uitools printsupport
 CONFIG += qt release core gui printsupport
 TEMPLATE = app
 TARGET =  OpenSMOKEpp_PostProcessor_QT4.sh
-DEPENDPATH +=  ../../src  ../../src/forms ../../src/QCustomPlot/qcustomplot-2.0.1
-INCLUDEPATH += ../../src  ../../src/forms ../../src/QCustomPlot/qcustomplot-2.0.1
+DEPENDPATH +=  ../../src  ../../src/forms ../../src/QCustomPlot/qcustomplot-2.1.0
+INCLUDEPATH += ../../src  ../../src/forms ../../src/QCustomPlot/qcustomplot-2.1.0
 
 QMAKE_LFLAGS += 
 

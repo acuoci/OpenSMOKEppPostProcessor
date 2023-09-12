@@ -40,7 +40,14 @@
 #include <QtCore/QMap>
 #include <QtGui/QPixmap>
 #include <QtCore/QVector>
-#include <QtWidgets/QWidget>
+#include <QtGlobal>
+
+#if QT_VERSION >= QT_VERSION_CHECK(5, 0, 0)
+#  include <QtWidgets/QWidget>
+#else
+#  include <QtGui>
+#endif
+
 #include <vector>
 
 #include "ui_widget_horizontal_bars.h"

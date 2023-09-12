@@ -42,7 +42,12 @@
 
 #include "qcustomplot.h"
 #include "xyplot.h"
-#include <QtWidgets/QMessageBox>
+#include <QtGlobal>
+#if QT_VERSION >= QT_VERSION_CHECK(5, 0, 0)
+#include <QtWidgets/QWidget>
+#else
+#include <QtGui>
+#endif
 #include <sstream>
 #include "widget_horizontal_bars.h"
 #include <Eigen/Dense>
