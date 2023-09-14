@@ -38,6 +38,7 @@
 #if QT_VERSION >= QT_VERSION_CHECK(5, 0, 0)
 #include <QtWidgets/QWidget>
 #include <QtPrintSupport/QPrintDialog>
+#include <QtWidgets/QAction>
 #else
 #include <QtGui>
 #endif
