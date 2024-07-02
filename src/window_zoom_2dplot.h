@@ -37,7 +37,7 @@
 #ifndef WINDOW_ZOOM_2DPLOT_H
 #define WINDOW_ZOOM_2DPLOT_H
 
-#include <QtCore\QtGlobal>
+#include <QtCore/QtGlobal>
 #if QT_VERSION >= QT_VERSION_CHECK(5, 0, 0)
 #include <QtWidgets/QDialog>
 #else

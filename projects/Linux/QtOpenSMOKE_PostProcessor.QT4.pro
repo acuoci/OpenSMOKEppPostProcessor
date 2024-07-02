@@ -2,8 +2,8 @@
 # Please, modify the paths reported below
 ######################################################################
 
-INCLUDE_BOOST = /software/chimica2/libraries/boost/boost-1.69.0-gcc-4.8.5/include
-LIB_BOOST = /software/chimica2/libraries/boost/boost-1.69.0-gcc-4.8.5/lib
+INCLUDE_BOOST = /software/chimica2/libraries/boost/boost-1.85.0-gcc-9.2.0/include
+LIB_BOOST = /software/chimica2/libraries/boost/boost-1.85.0-gcc-9.2.0/lib
 INCLUDE_EIGEN = /software/chimica2/libraries/eigen/eigen-3.4.0
 INCLUDE_OPENSMOKEPP = ../../../OpenSMOKEpp/source
 
@@ -16,7 +16,7 @@ INCLUDE_OPENSMOKEPP = ../../../OpenSMOKEpp/source
 # DO NOT CHANGE THE LINES BELOW
 ################################################################################
 
-QMAKE_CXXFLAGS += -DQTVERSION=4 -std=c++11
+QMAKE_CXXFLAGS += -DQTVERSION=4 -std=c++17
 
 QT += widgets uitools printsupport
 CONFIG += qt release core gui printsupport
@@ -69,7 +69,7 @@ SOURCES += ../../src/main.cpp \
            ../../src/xyplot.cpp \
            ../../src/QCustomPlot/qcustomplot-2.0.1/qcustomplot.cpp
 
-LIBS    += -L$${LIB_BOOST} -lboost_date_time -lboost_filesystem -lboost_program_options -lboost_system -lboost_regex
+LIBS    += -L$${LIB_BOOST} -lboost_date_time -lboost_filesystem -lboost_program_options -lboost_system -lboost_regex -lboost_atomic
 
 ##################################################
 # If MKL Support is needed, add the following line
