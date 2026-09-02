@@ -133,7 +133,7 @@ void Sensitivities_Database::ReadParentFile()
 				}
 				else
 				{
-					unsigned int global_index = data_->kineticsMapXML->IndicesOfCabrReactions()[local_index-data_->kineticsMapXML->NumberOfReactions()-1];
+					unsigned int global_index = data_->kineticsMapXML->IndicesOfCabrReactions()[local_index-data_->kineticsMapXML->NumberOfFallOffReactions()-1];
 					std::stringstream index;
 					index << global_index;
 					std::string tmp = "R" + index.str() + "(inf): " + data_->reaction_strings_[global_index-1];
